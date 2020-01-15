@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './SignUp.css';
 import account from './account.png';
+import axios from 'axios';
 
 export class SignUp extends Component {
     constructor(props) {
@@ -22,9 +23,17 @@ export class SignUp extends Component {
     }
 
     handleSubmit(e) {
-        alert(`${this.state.username}, ${this.state.password}`);
         e.preventDefault();
+        axios.post('/account/users', {
+            username: this.state.username,
+            email: this.state.email
+        }).then((response) => {
+            console.log(response.status);
+        }).catch((err) => {
+            console.log(err)
+        })
     }
+
 
     render() {
         return (
