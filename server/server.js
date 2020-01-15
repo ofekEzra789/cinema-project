@@ -4,7 +4,7 @@ const router = express.Router();
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(express.json());
 app.get('/', (req,res) => {
     res.send('<h1>hello world</h1>');
 });
