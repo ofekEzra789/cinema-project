@@ -28,7 +28,7 @@ export class SignUp extends Component {
             username: this.state.username,
             email: this.state.email
         }).then((response) => {
-            console.log(response.status);
+            console.log(response.data);
         }).catch((err) => {
             console.log(err)
         })
