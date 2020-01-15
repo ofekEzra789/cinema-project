@@ -1,0 +1,70 @@
+/* Header */
+.Home-header {
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(45, 19, 44, 0.500), rgba(128, 19, 53, 0.500)) ,url('./cinema.jpg');
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.Home-headline__primary {
+    font-family: 'Merienda', cursive;
+    font-size: 3rem;
+}
+
+.Home-headline__secondary {
+    font-size: 1.2rem;
+}
+
+.Home-headline-button {
+    background-color: #c72c41;
+    text-transform: uppercase;
+}
+
+.Home-headline-button:focus, .Home-headline-button:hover {
+    background-color: #c72c41;
+}
+
+/* Main */
+.Home-main {
+    padding: 1rem;
+}
+
+.Home-main-primary {
+    padding: 3rem;
+}
+
+.Home-main-primary::before {
+    content: "&";
+    color: transparent;
+    display: block;
+    width: 100%;
+    height: 15px;
+    background-color: #851d41;
+    border-radius: 5px;
+}
+
+.Home-main {
+    background-color: #f5eaea;
+}
+
+.Home-main-primary::after {
+    content: "&";
+    color: transparent;
+    display: block;
+    width: 100%;
+    height: 15px;
+    background-color: #851d41;
+    border-radius: 5px;
+}
+
+.Home-main-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+

@@ -1,0 +1,34 @@
+.Login {
+    background-color: teal;
+    height: calc(100vh - 2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./central-cinema-sign-2.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.Login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: rgba(245, 245, 245, 0.57);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.55);
+
+}
+
+.Login-form button {
+    width: 100%;
+}
+
+.form-footer {
+    margin: 1.5rem 0;
+}
+
+.form-footer span:hover {
+    border-bottom: 1px solid crimson;
+    cursor: pointer;
+}

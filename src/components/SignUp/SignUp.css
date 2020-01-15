@@ -1,0 +1,43 @@
+.SignUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 2rem);
+    background-image: url('./central-cinema-sign.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.form-header {
+    color: white;
+    font-size: 2rem;
+}
+
+.SignUp-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: rgba(245, 245, 245, 0.57);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.55);
+
+}
+
+.SignUp-form button {
+    width: 100%;
+}
+
+.form-img {
+    background-color: rgba(245, 245, 245, 0.37);
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+}
+

@@ -1,0 +1,33 @@
+.Footer {
+    padding: 2rem 0;
+    background-color: #4d4646;
+    color: white;
+}
+
+.Footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Footer-about {
+    flex: 0 0 60%;
+    text-align: left;
+}
+
+.Footer-links {
+    flex: 1;
+}
+
+.Footer-links li {
+    list-style: none;
+
+}
+
+.Footer-contact {
+    flex: 1;
+}
+
+.Footer-contact li {
+    list-style: none;
+}
