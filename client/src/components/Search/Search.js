@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Search.css';
 import SearchResult from './SearchResult';
-import {Row, Col, Container} from 'reactstrap'
+import {Container} from 'reactstrap';
 
 const genresId = {
     Action: '28',
