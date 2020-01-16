@@ -5,7 +5,6 @@ import {Button} from 'reactstrap';
 import {Row, Col} from 'reactstrap'
 import axios from 'axios';
 import Movie from '../Movie/Movie';
-import uuid from 'uuid';
 
 const apiKey = 'f35b8795c5a78c90b11cf249e92b1995';
 const baseUrl = 'https://api.themoviedb.org/3/movie';
@@ -39,9 +38,9 @@ export class Home extends Component {
     checkIfDataAvailable(moviesArray) {
         if(!this.state.isLoading) {
             return (
-                <Row>
+                <Row >
                     {moviesArray.map(movie =>
-                        <Col md="3">
+                        <Col key={movie.id} md="3">
                             <Movie 
                             id={movie.id}
                             title={movie.title}

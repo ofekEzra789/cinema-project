@@ -8,7 +8,7 @@ import './Movie.css'
 export class Movie extends Component {
     render() {
         return (
-            <div className="Movie" key={this.props.id}>
+            <div className="Movie" >
                    <Card className="Movie-Card">
                         <CardImg className="Card-Img"  src={this.props.src} alt={this.props.title}></CardImg>
                         <CardBody>
