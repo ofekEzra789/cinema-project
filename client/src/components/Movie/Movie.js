@@ -9,7 +9,7 @@ export class Movie extends Component {
     render() {
         return (
             <div className="Movie" key={this.props.id}>
-                    <Card className="Movie-Card">
+                   <Card className="Movie-Card">
                         <CardImg className="Card-Img"  src={this.props.src} alt={this.props.title}></CardImg>
                         <CardBody>
                             {/* <CardTitle>{this.props.title}</CardTitle> */}

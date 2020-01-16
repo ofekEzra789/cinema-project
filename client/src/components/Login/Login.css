@@ -1,5 +1,5 @@
 .Login {
-    height: calc(100vh - 2rem + 94.4px);
+    min-height: calc(100vh - 2rem );
     display: flex;
     justify-content: center;
     align-items: center;

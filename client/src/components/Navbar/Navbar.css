@@ -1,9 +1,8 @@
 .Navbar {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(245, 234, 234, 0.082);
+    background-color: #1b262c;
     box-sizing: 5px 5px 7px rgba(0, 0, 0, 0.219);
     padding: 1.5rem 0;
 }
