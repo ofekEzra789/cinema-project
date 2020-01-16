@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Row, Col } from 'reactstrap';
 import SearchItem from './SearchItem';
+import './SearchResult.css'
 
 
 const apiKey = "f35b8795c5a78c90b11cf249e92b1995";
@@ -30,7 +31,7 @@ export class SearchResult extends Component {
             return (
                 <Row>
                     {this.state.moviesArray.map(movie =>
-                         <Col key={movie.id} md="3">
+                         <Col key={movie.id}  sm="6" md="4" lg="3">
                          <SearchItem
                          id={movie.id}
                          title={movie.title}

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
-import {Container} from 'reactstrap';
 import {Button} from 'reactstrap';
-import {Row, Col} from 'reactstrap'
+import {Row, Col, Container} from 'reactstrap'
 import axios from 'axios';
 import Movie from '../Movie/Movie';
 
@@ -40,7 +39,7 @@ export class Home extends Component {
             return (
                 <Row >
                     {moviesArray.map(movie =>
-                        <Col key={movie.id} md="3">
+                        <Col key={movie.id} sm="6" md="4" lg="3" >
                             <Movie 
                             id={movie.id}
                             title={movie.title}
@@ -75,12 +74,12 @@ export class Home extends Component {
                 </div>
 
                 <div className="Home-main">
-                    <Container fluid>
+                    <Container className="p-3">
                         <h2 className="Home-main-primary">Popular Movies</h2>
                             {this.checkIfDataAvailable(this.state.popularMovies)} 
                     </Container>
 
-                    <Container fluid>
+                    <Container className="p-3">
                         <h2 className="Home-main-primary">Top Rated Movies</h2>
                             {this.checkIfDataAvailable(this.state.topRatedMovies)} 
                     </Container>

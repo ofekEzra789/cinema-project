@@ -9,8 +9,8 @@ export class SearchItem extends Component {
     render() {
         return (
             <div className="SearchItem">
-                <Card className="Movie-Card">
-                        <CardImg className="Card-Img"  src={this.props.src} alt={this.props.title}></CardImg>
+                <Card className="SearchItem-Card">
+                        <CardImg className="SearchItem-Img"  src={this.props.src} alt={this.props.title}></CardImg>
                         <CardBody>
                             {/* <CardTitle>{this.props.title}</CardTitle> */}
                             <CardText>Release Year: {this.props.releaseDate}</CardText>
