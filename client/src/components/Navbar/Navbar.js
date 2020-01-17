@@ -11,7 +11,6 @@ export class Navbar extends Component {
                 <nav className="Navbar-nav">
                     <h3 className="Navbar-Logo">Movie Hunter</h3>
                     <NavLink className="home" to='/'>Home</NavLink>
-                    {/* <NavLink className="movies" to='#'>Movies</NavLink> */}
                      <UncontrolledDropdown>
                             <DropdownToggle caret>
                                 Genres

@@ -26,7 +26,8 @@ export class SignUp extends Component {
         e.preventDefault();
         axios.post('/account/users', {
             username: this.state.username,
-            email: this.state.email
+            email: this.state.email,
+            password: this.state.password,
         }).then((response) => {
             console.log(response.data);
         }).catch((err) => {
