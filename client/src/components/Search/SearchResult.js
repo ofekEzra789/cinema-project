@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import SearchItem from './SearchItem';
 import './SearchResult.css'
 
@@ -25,6 +25,14 @@ export class SearchResult extends Component {
         this.setState({moviesArray: response.data.results, isLoading: false})
         console.log(this.state.moviesArray)
     }
+   
+    async componentDidUpdate(prevProps) {
+        if (this.props.genre !== prevProps.genre) {
+          let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`
+          const response = await axios.get(urlWithParams)
+          this.setState({moviesArray: response.data.results, isLoading: false})
+        }
+      }
 
     checkIfDataAvailable() {
         if (!this.state.isLoading) {

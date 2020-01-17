@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './Search.css';
 import SearchResult from './SearchResult';
 import {Container} from 'reactstrap';
@@ -10,10 +9,6 @@ const genresId = {
     Comedy: '35',
     Adventure: '12'
 }
-
-// const apiKey = "f35b8795c5a78c90b11cf249e92b1995";
-// const baseUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`
-// const baseImgUrl = 'https://image.tmdb.org/t/p/w500';
 
 export class Search extends Component {
     constructor(props) {
@@ -44,6 +39,7 @@ export class Search extends Component {
         return temp
     }
 
+
     render() {
         return (
             <div className="Search">
@@ -52,7 +48,7 @@ export class Search extends Component {
                 <div className="Search-main">
                     <h1 className="Search-title">{this.state.title} Movies</h1>
                     <Container>
-                        <SearchResult checkGenre={this.checkGenre}/>
+                        <SearchResult checkGenre={this.checkGenre} genreId={this.state.genre}/>
                     </Container>
                 </div>
             </div>
