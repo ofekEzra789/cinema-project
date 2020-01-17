@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import {Button} from 'reactstrap';
-import {Row, Col, Container} from 'reactstrap'
+import {Row, Col, Container} from 'reactstrap';
 import axios from 'axios';
 import Movie from '../Movie/Movie';
 
