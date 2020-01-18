@@ -15,7 +15,7 @@ export class App extends Component {
         <Navbar/>
         <Switch>
           <Route exact path="/" render={() => <Home />}></Route>
-          <Route exact path="/account/signup" render={() => <SignUp />}></Route>
+          <Route exact path="/account/signup" render={(routeProps) => <SignUp {...routeProps} />}></Route>
           <Route exact path="/account/login" render={(routeProps) => <Login {...routeProps}/>}></Route>
           <Route exact path="/search/genre/:genre" render={(routeProps) => <Search {...routeProps}/>}></Route>
         </Switch>

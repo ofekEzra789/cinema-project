@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './SignUp.css';
 import account from './account.png';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 
 export class SignUp extends Component {
     constructor(props) {
@@ -24,15 +25,20 @@ export class SignUp extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        axios.post('/account/users', {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password,
-        }).then((response) => {
-            console.log(response.data);
-        }).catch((err) => {
-            console.log(err)
-        })
+        if (this.state.password === this.state.confirmPassword) {
+            axios.post('/account/users', {
+                username: this.state.username,
+                email: this.state.email,
+                password: this.state.password,
+            }).then((response) => {
+                alert('Success');
+                this.props.history.push('/account/login')
+            }).catch((err) => {
+                console.log(err)
+            })
+        } else {
+            alert('password does not match')
+        }
     }
 
 
