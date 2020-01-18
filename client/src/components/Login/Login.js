@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './Login.css';
 import account from './account.png';
+import axios from 'axios';
 
 export class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            isLoged: false
         }
         this.handleClickRedirect = this.handleClickRedirect.bind(this);
         this.handleChange = this.handleChange.bind(this);

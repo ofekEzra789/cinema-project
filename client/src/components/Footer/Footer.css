@@ -31,3 +31,23 @@
 .Footer-contact li {
     list-style: none;
 }
+
+@media only screen and (max-width: 768px) {
+    .Footer-container {
+        flex-flow: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .Footer-about {
+        text-align: center;
+    }
+
+    .Footer-links  {
+        text-align: center;
+    }
+
+    .Footer-contact  {
+        text-align: center;
+    }
+}

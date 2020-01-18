@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './SignUp.css';
 import account from './account.png';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom'
 
 export class SignUp extends Component {
     constructor(props) {
