@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import SearchItem from './SearchItem';
 import './SearchResult.css';
 
@@ -17,22 +17,31 @@ export class SearchResult extends Component {
             page: 1,
             isLoading: true
         }
+        this.nextPage = this.nextPage.bind(this);
+        this.prevPage = this.prevPage.bind(this);
     }
 
     async componentDidMount() {
         let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`
         const response = await axios.get(urlWithParams)
         this.setState({moviesArray: response.data.results, isLoading: false})
-        console.log(this.state.moviesArray)
     }
    
-    async componentDidUpdate(prevProps) {
-        if (this.props.genreId !== prevProps.genreId) {
+    async componentDidUpdate(prevProps, prevState) {
+        if (this.state.page !== prevState.page) {
           let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`
           const response = await axios.get(urlWithParams)
           this.setState({moviesArray: response.data.results, isLoading: false})
         }
-      }
+    }
+
+    nextPage() {
+        this.setState(st => ({ page: st.page + 1}))
+    }
+
+    prevPage() {
+        this.setState(st => ({ page: st.page - 1})) 
+    }
 
     checkIfDataAvailable() {
         if (!this.state.isLoading) {
@@ -64,7 +73,13 @@ export class SearchResult extends Component {
     render() {
         return (
             <div className="SearchResult">
+                <Button className="btn-danger m-2" onClick={this.prevPage}>Previous page</Button>
+                <Button className="btn-danger m-2" onClick={this.nextPage}>Next page</Button>
+
                 {this.checkIfDataAvailable()}
+
+                <Button className="btn-danger m-2" onClick={this.prevPage}>Previous page</Button>
+                <Button className="btn-danger m-2" onClick={this.nextPage}>Next page</Button>
             </div>
         )
     }

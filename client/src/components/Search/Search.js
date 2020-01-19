@@ -18,28 +18,25 @@ export class Search extends Component {
             title: this.props.match.params.genre
         }
         this.checkGenre = this.checkGenre.bind(this);
+        // this.findGenere = this.findGenere.bind(this);
     }
 
     checkGenre() {
         const whichGenre = this.props.match.params.genre;
         let temp;
         if (whichGenre === 'action') {
-            this.setState({genre: genresId.Action});
             temp = genresId.Action;
         } else if (whichGenre === 'animation') {
-            this.setState({genre: genresId.Animation})
             temp = genresId.Animation;
         } else if (whichGenre === 'comedy') {
-            this.setState({genre: genresId.Comedy})
             temp = genresId.Comedy;
         } else if (whichGenre === 'adventure') {
-            this.setState({genre: genresId.Adventure})
             temp = genresId.Adventure;
         }
         return temp
     }
 
-
+  
     render() {
         return (
             <div className="Search">

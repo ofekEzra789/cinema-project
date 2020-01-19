@@ -84,4 +84,11 @@
     transform: scaleX(1);
 }
 
+.activeLink {
+    color: #db3056!important;
+    font-weight: 700 !important;
+}
+
+
+
 
