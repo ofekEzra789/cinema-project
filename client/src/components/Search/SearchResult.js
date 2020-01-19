@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import SearchItem from './SearchItem';
 import './SearchResult.css'
 
@@ -27,7 +27,8 @@ export class SearchResult extends Component {
     }
    
     async componentDidUpdate(prevProps) {
-        if (this.props.genre !== prevProps.genre) {
+        console.log(prevProps.genreId, this.props.genreId)
+        if (this.props.genreId !== prevProps.genreId) {
           let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`
           const response = await axios.get(urlWithParams)
           this.setState({moviesArray: response.data.results, isLoading: false})
@@ -46,6 +47,7 @@ export class SearchResult extends Component {
                          src={`${baseImgUrl}/${movie.poster_path}`}
                          releaseDate={movie.release_date}
                          rating={movie.vote_average}
+                         addMovie={this.props.addMovie}
                          />
                      </Col>        
                     )}

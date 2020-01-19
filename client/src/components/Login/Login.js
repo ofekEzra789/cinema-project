@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
 import account from './account.png';
-import axios from 'axios';
+// import axios from 'axios';
 
 export class Login extends Component {
     constructor(props) {

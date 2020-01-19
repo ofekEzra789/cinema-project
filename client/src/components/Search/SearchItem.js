@@ -6,6 +6,15 @@ import {
 } from 'reactstrap';
 
 export class SearchItem extends Component {
+    constructor(props) {
+        super(props);
+        this.handleAddMovie = this.handleAddMovie.bind(this)
+    }
+
+    handleAddMovie() {
+        this.props.addMovie(this.props.id, this.props.title, this.props.src, this.props.releaseDate, this.props.rating);
+    }
+
     render() {
         return (
             <div className="SearchItem">
@@ -17,7 +26,7 @@ export class SearchItem extends Component {
                             <CardText>Rating: {this.props.rating}</CardText>
                             <div className="card-Button">
                                 <Button>Buy Ticket </Button>
-                                <i className="em em-black_heart ml-2"  aria-label="BLACK HEART"></i>
+                                <i onClick={this.handleAddMovie} className="em em-black_heart ml-2"  aria-label="BLACK HEART"></i>
                             </div>
                         </CardBody>
                     </Card>
