@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Row, Col } from 'reactstrap';
 import SearchItem from './SearchItem';
 import './SearchResult.css';
-import uuid from 'uuid'
 
 
 const apiKey = "f35b8795c5a78c90b11cf249e92b1995";
@@ -28,7 +27,6 @@ export class SearchResult extends Component {
     }
    
     async componentDidUpdate(prevProps) {
-        console.log(prevProps.genreId, this.props.genreId)
         if (this.props.genreId !== prevProps.genreId) {
           let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`
           const response = await axios.get(urlWithParams)

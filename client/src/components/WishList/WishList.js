@@ -3,8 +3,6 @@ import './WishList.css';
 import {Row, Col, Container} from 'reactstrap';
 import WishListItem from './WishListItem';
 
-const baseImgUrl = 'https://image.tmdb.org/t/p/w500';
-
 export class WishList extends Component {
     constructor(props) {
         super(props);

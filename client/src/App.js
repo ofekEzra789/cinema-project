@@ -27,8 +27,9 @@ export class App extends Component {
 
   removeMovie(itemId) {
     const itemToRemove = this.state.favorite.findIndex((fav => {
-        return fav.id === itemId
+        return fav.newMovieId === itemId
     }))
+    console.log(itemToRemove)
 
     const tempArray = [...this.state.favorite]
     tempArray.splice(itemToRemove, 1);

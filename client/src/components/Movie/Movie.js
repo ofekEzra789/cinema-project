@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Card, CardImg, CardText, CardBody,
-    Button, CardTitle
+    CardTitle
 } from 'reactstrap';
 import './Movie.css'
 
