@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Row, Col } from 'reactstrap';
 import SearchItem from './SearchItem';
-import './SearchResult.css'
+import './SearchResult.css';
+import uuid from 'uuid'
 
 
 const apiKey = "f35b8795c5a78c90b11cf249e92b1995";

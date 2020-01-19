@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './SearchItem.css';
 import {
     Card, CardImg, CardText, CardBody,
-    Button
+    Button, CardTitle
 } from 'reactstrap';
 
 export class SearchItem extends Component {
@@ -21,7 +21,7 @@ export class SearchItem extends Component {
                 <Card className="SearchItem-Card">
                         <CardImg className="SearchItem-Img"  src={this.props.src} alt={this.props.title}></CardImg>
                         <CardBody>
-                            {/* <CardTitle>{this.props.title}</CardTitle> */}
+                            <CardTitle className="CardTitle">{this.props.title}</CardTitle>
                             <CardText>Release Year: {this.props.releaseDate}</CardText>
                             <CardText>Rating: {this.props.rating}</CardText>
                             <div className="card-Button">
