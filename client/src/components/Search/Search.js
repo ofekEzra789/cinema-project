@@ -45,7 +45,7 @@ export class Search extends Component {
                 <div className="Search-main">
                     <h1 className="Search-title">{this.state.title} Movies</h1>
                     <Container>
-                        <SearchResult addMovie={this.props.addMovie} checkGenre={this.checkGenre} genreId={this.state.genre}/>
+                        <SearchResult title={this.state.title} addMovie={this.props.addMovie} checkGenre={this.checkGenre} genreId={this.state.genre}/>
                     </Container>
                 </div>
             </div>
