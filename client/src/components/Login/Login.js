@@ -38,7 +38,7 @@ export class Login extends Component {
       .then(res => {
         if (res.status === 200) {
           alert("Successful login");
-          localStorage.user = res.data.user;
+          localStorage.user = JSON.stringify(res.data.user);
           this.handleCheckIfLogged();
           this.setState({ redirectToHome: true });
         }
