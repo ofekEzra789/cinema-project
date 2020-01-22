@@ -2,7 +2,6 @@ const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
 const dbName = 'cinema', collectionName = 'users';
 
-
 function login(req, res) {
     console.log("/users/login is accessed");
 
