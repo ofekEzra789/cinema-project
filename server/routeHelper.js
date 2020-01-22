@@ -2,6 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
 const dbName = 'cinema', collectionName = 'users';
 
+// login
 function login(req, res) {
     console.log("/users/login is accessed");
 
@@ -23,7 +24,7 @@ function login(req, res) {
 
             if (user) {
                 // --- this is post but no document is creatrd so return 200 
-                return res.sendStatus(200);
+                return res.send(user);
             }
             // --- user not found
             return res.sendStatus(404);
@@ -31,7 +32,7 @@ function login(req, res) {
     });
 };
 
-
+// signUp
 function signUp(req, res) {
 
     console.log("/users/signUp is accessed");
@@ -72,7 +73,11 @@ function signUp(req, res) {
         });
     });
 
-}
+};
+
+// WishList
+
+
 
 module.exports.signUp = signUp;
 module.exports.login = login;
