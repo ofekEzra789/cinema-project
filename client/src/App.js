@@ -23,6 +23,7 @@ export class App extends Component {
     this.sendFavorite = this.sendFavorite.bind(this)
   }
 
+  
   addMovie(newMovieId, newMovieTitle, newMovieImg, newMovieReleaseDate, newMoviRating) {
     this.setState({
       favorite: [...this.state.favorite, {newMovieId, newMovieTitle, newMovieImg, newMovieReleaseDate, newMoviRating}]
