@@ -48,15 +48,16 @@ function signUp(req, res) {
 
         dbo.collection(collectionName).findOne({ 
             userName:queryUser.userName, email:queryUser.email, password:queryUser.password, confirmPassword:queryUser.confirmPassword },
-             function (err, userFound) {
+             function (err, user) {
             if (err) {
                 console.log(err);
                 return res.sendStatus(500);
             }
 
-            if (userFound) {
+            if (user) {
                 // --- email found 
-                return res.sendStatus(400);
+                console.log(user)
+                return res.send(user);
             }
 
             // --- no email match --> insert user

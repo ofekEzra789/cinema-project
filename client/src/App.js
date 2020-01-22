@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import Search from './components/Search/Search';
 import WishList from './components/WishList/WishList'
 import {Route, Switch} from 'react-router-dom';
+import axios from 'axios';
 
 export class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export class App extends Component {
     this.addMovie = this.addMovie.bind(this)
     this.removeMovie = this.removeMovie.bind(this);
     this.checkIfLogged = this.checkIfLogged.bind(this);
+    this.sendFavorite = this.sendFavorite.bind(this)
   }
 
   addMovie(newMovieId, newMovieTitle, newMovieImg, newMovieReleaseDate, newMoviRating) {
@@ -43,6 +45,12 @@ export class App extends Component {
     this.setState({ isLogged: true })
   }
 
+  sendFavorite() {
+    axios.post('/favorites', {
+      favorites: this.state.favorite
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -52,7 +60,7 @@ export class App extends Component {
           <Route exact path="/account/signup" render={(routeProps) => <SignUp {...routeProps} />}></Route>
           <Route exact path="/account/login" render={(routeProps) => <Login {...routeProps} checkIfLogged={this.checkIfLogged} isLogged={this.state.isLogged}/>}></Route>
           <Route exact path="/search/genre/:genre" render={(routeProps) => <Search addMovie={this.addMovie} {...routeProps} favorite={this.state.favorite} />}></Route>
-          {/* <Route exact path="/Wishlist" render={() => <WishList favorite={this.state.favorite} removeMovie={this.removeMovie}/>}></Route> */}
+          <Route exact path="/Wishlist" render={() => <WishList favorite={this.state.favorite} sendFavorite={this.sendFavorite} removeMovie={this.removeMovie}/>}></Route>
         </Switch>
         <Footer />
       </div>

@@ -14,7 +14,8 @@ export class SearchResult extends Component {
     this.state = {
       moviesArray: [],
       page: 1,
-      isLoading: true
+      isLoading: true,
+      title: ""
     };
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
@@ -34,7 +35,7 @@ export class SearchResult extends Component {
       this.state.page
     }&with_genres=${this.props.checkGenre()}`;
     const response = await axios.get(urlWithParams);
-    this.setState({ moviesArray: response.data.results, isLoading: false });
+    this.setState({ moviesArray: response.data.results, isLoading: false});
     //}
   }
 
