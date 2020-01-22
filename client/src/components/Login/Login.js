@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Login.css';
 import account from './account.png';
-// import axios from 'axios';
+import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 
 export class Login extends Component {
     constructor(props) {
@@ -9,14 +10,15 @@ export class Login extends Component {
         this.state = {
             email: "",
             password: "",
-            isLoged: false
+            redirectToHome:false
         }
-        this.handleClickRedirect = this.handleClickRedirect.bind(this);
+        this.handleClickRedirectsignup = this.handleClickRedirectsignup.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleCheckIfLogged = this.handleCheckIfLogged.bind(this);
     }
 
-    handleClickRedirect() {
+    handleClickRedirectsignup() {
         this.props.history.push('/account/signup')
     }
 
@@ -28,9 +30,34 @@ export class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        axios.post('/account/users/login', {
+            email: this.state.email,
+            password: this.state.password
+        })
+        .then((res) => {
+            if (res.status === 200) {
+                alert('Successful login')
+                this.handleCheckIfLogged()
+                this.setState ({redirectToHome:true})
+            }
+            
+        })
+        .catch((err) => {
+            alert(err)
+        })
+    }
+
+    handleCheckIfLogged() {
+        this.props.checkIfLogged()
     }
 
     render() {
+        if (this.state.redirectToHome)
+        {
+            return (
+                <Redirect to = '/'/>
+            )
+        }
         return (
             <div className="Login">
                 <form className="Login-form" onSubmit={this.handleSubmit}>

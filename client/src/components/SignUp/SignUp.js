@@ -25,7 +25,7 @@ export class SignUp extends Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.password === this.state.confirmPassword) {
-            axios.post('/account/users', {
+            axios.post('/account/users/signUp', {
                 username: this.state.username,
                 email: this.state.email,
                 password: this.state.password,

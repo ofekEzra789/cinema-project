@@ -13,10 +13,12 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorite: []
+      favorite: [],
+      isLogged: false
     }
     this.addMovie = this.addMovie.bind(this)
-    this.removeMovie = this.removeMovie.bind(this)
+    this.removeMovie = this.removeMovie.bind(this);
+    this.checkIfLogged = this.checkIfLogged.bind(this);
   }
 
   addMovie(newMovieId, newMovieTitle, newMovieImg, newMovieReleaseDate, newMoviRating) {
@@ -37,16 +39,20 @@ export class App extends Component {
     this.setState({ favorite: tempArray })
   }
 
+  checkIfLogged() {
+    this.setState({ isLogged: true })
+  }
+
   render() {
     return (
       <div className="App">
-        <Navbar/>
+        <Navbar isLogged={this.state.isLogged}/>
         <Switch>
           <Route exact path="/" render={() => <Home />}></Route>
           <Route exact path="/account/signup" render={(routeProps) => <SignUp {...routeProps} />}></Route>
-          <Route exact path="/account/login" render={(routeProps) => <Login {...routeProps}/>}></Route>
+          <Route exact path="/account/login" render={(routeProps) => <Login {...routeProps} checkIfLogged={this.checkIfLogged} isLogged={this.state.isLogged}/>}></Route>
           <Route exact path="/search/genre/:genre" render={(routeProps) => <Search addMovie={this.addMovie} {...routeProps} favorite={this.state.favorite} />}></Route>
-          <Route exact path="/Wishlist" render={() => <WishList favorite={this.state.favorite} removeMovie={this.removeMovie}/>}></Route>
+          {/* <Route exact path="/Wishlist" render={() => <WishList favorite={this.state.favorite} removeMovie={this.removeMovie}/>}></Route> */}
         </Switch>
         <Footer />
       </div>

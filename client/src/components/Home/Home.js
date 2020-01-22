@@ -66,7 +66,7 @@ export class Home extends Component {
                 <div className="Home-header">
                     <div className="Home-headline">
                         <Container>
-                            <h1 className="Home-headline__primary">Welcome To Movie Hunter Website</h1>
+                            <h1 className="Home-headline__primary">Welcome To Ninja Movie Website</h1>
                             <p className="Home-headline__secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit condimentum ligula, et ultricies lectus ligula, et ultricies lectus ligula, et ultricies lectus.</p>
                             <Button className="Home-headline-button">Into the Site</Button>
                         </Container>

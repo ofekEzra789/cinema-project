@@ -16,7 +16,7 @@ function login(req, res) {
         // --- expecting email , passeord
         const queryUser = req.body;
 
-        dbo.collection(collectionName).findOne({email:queryUser.email,password:queryUser.password}, function (err, user) {
+        dbo.collection(collectionName).findOne(queryUser, function (err, user) {
             if (err) {
                 console.log(err);
                 return res.sendStatus(500);
