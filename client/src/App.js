@@ -42,6 +42,7 @@ export class App extends Component {
     newMovieReleaseDate,
     newMoviRating
   ) {
+<<<<<<< HEAD
     this.sendFavorite({
       newMovieId,
       newMovieTitle,
@@ -49,6 +50,23 @@ export class App extends Component {
       newMovieReleaseDate,
       newMoviRating
     })
+=======
+    this.setState({
+      favorite: [
+        ...this.state.favorite,
+        {
+          newMovieId,
+          newMovieTitle,
+          newMovieImg,
+          newMovieReleaseDate,
+          newMoviRating
+        }
+      ]
+    });
+    console.log(this.state.favorite)
+    // this.sendFavorite()
+
+>>>>>>> 1d4ca58f4f957f9200ac3fd481869267a00d861e
   }
 
   removeMovie(itemId) {
