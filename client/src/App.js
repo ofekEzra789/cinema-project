@@ -14,8 +14,9 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // isLogged: false,
       favorite: [],
-      isLogged: localStorage.length < 1 ? false : true 
+      isLogged: localStorage.length < 1 ? false : true
     };
     this.addMovie = this.addMovie.bind(this);
     this.removeMovie = this.removeMovie.bind(this);
@@ -24,10 +25,15 @@ export class App extends Component {
     this.changeLoggedToFalse = this.changeLoggedToFalse.bind(this)
   }
   // user = JSON.parse(localStorage.user);
-  
+
   componentDidMount() {
-  //  this.sendFavorite()
+    //  this.sendFavorite()
+    console.log(localStorage.length);
+
+
   }
+
+
 
   addMovie(
     newMovieId,
@@ -36,21 +42,13 @@ export class App extends Component {
     newMovieReleaseDate,
     newMoviRating
   ) {
-    this.setState({
-      favorite: [
-        ...this.state.favorite,
-        {
-          newMovieId,
-          newMovieTitle,
-          newMovieImg,
-          newMovieReleaseDate,
-          newMoviRating
-        }
-      ]
-    });
-    console.log(this.state.favorite)
-    this.sendFavorite()
-
+    this.sendFavorite({
+      newMovieId,
+      newMovieTitle,
+      newMovieImg,
+      newMovieReleaseDate,
+      newMoviRating
+    })
   }
 
   removeMovie(itemId) {
@@ -66,18 +64,21 @@ export class App extends Component {
   }
 
   checkIfLogged() {
-    this.setState({ isLogged: true });
+    const isLogged = !this.state.isLogged
+    this.setState({ isLogged: isLogged });
   }
 
-  
+
   changeLoggedToFalse() {
-    // this.setState({ isLogged: false });
+    this.setState({ isLogged: false });
     localStorage.removeItem('user')
   }
 
-  sendFavorite() {
-    axios.post("search/account/users/favorites", {
-      favorites: this.state.favorite
+  sendFavorite(favorite) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.post("http://localhost:5000/account/users/favorites", {
+      userId: user._id,
+      favorites: favorite
     }).then((res) => {
       console.log(res.data)
       console.log(res.status)
@@ -87,10 +88,12 @@ export class App extends Component {
   }
 
   render() {
+    console.log(this.state.isLogged);
+
     return (
       <div className="App">
-        
-        <Navbar isLogged={this.state.isLogged} changeLoggedToFalse={this.changeLoggedToFalse}/>
+
+        <Navbar isLogged={this.state.isLogged} changeLoggedToFalse={this.changeLoggedToFalse} />
         <Switch>
           <Route exact path="/" render={() => <Home />}></Route>
           <Route

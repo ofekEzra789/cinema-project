@@ -17,12 +17,17 @@ export class Navbar extends Component {
     this.props.changeLoggedToFalse()
    }
 
-   componentDidUpdate(prevProps, prevState) {
-       
+   componentDidUpdate(prevProps, preveState) {
+       console.log(prevProps, preveState);
+       if (prevProps.isLogged !== this.props.isLogged) {
+           this.setState({logged: this.props.isLogged})
+       }
    }
     
     render() {
         let {isLogged} = this.props
+        console.log(isLogged);
+        
         if(this.state.logged) {
             return (
                 <div className="Navbar">

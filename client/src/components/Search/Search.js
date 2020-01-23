@@ -35,9 +35,15 @@ export class Search extends Component {
         }
         return temp
     }
-
+    componentDidUpdate(prevProps,prevState){
+        if (prevProps.match.params.genre !== this.props.match.params.genre) {
+            this.setState({title: this.props.match.params.genre})
+        }
+    }
    
     render() {
+        console.log(this.props);
+        
         return (
             <div className="Search">
                 <div className="Search-header"></div>
