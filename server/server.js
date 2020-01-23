@@ -16,7 +16,10 @@ app.post("/account/users/signUp", (req, res) => {
 app.post("/account/users/login", (req, res) => {
     routeHelper.login(req, res);
 });
-
+// wishList
+app.post("/account/users/favorites", (req, res) => {
+    routeHelper.favorites(req, res);
+});
 // Port
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

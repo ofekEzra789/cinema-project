@@ -26,7 +26,7 @@ export class App extends Component {
   // user = JSON.parse(localStorage.user);
   
   componentDidMount() {
-   this.sendFavorite()
+  //  this.sendFavorite()
   }
 
   addMovie(
@@ -48,7 +48,8 @@ export class App extends Component {
         }
       ]
     });
-    this.sendFavorite()
+    console.log(this.state.favorite)
+    // this.sendFavorite()
 
   }
 
