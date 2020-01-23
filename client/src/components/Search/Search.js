@@ -21,6 +21,8 @@ export class Search extends Component {
         // this.findGenere = this.findGenere.bind(this);
     }
 
+    
+
     checkGenre() {
         const whichGenre = this.props.match.params.genre;
         let temp;
