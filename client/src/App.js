@@ -76,7 +76,7 @@ export class App extends Component {
   }
 
   sendFavorite() {
-    axios.post("account/users/favorites", {
+    axios.post("search/account/users/favorites", {
       favorites: this.state.favorite
     }).then((res) => {
       console.log(res.data)
