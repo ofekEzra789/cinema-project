@@ -8,7 +8,7 @@ export class WishList extends Component {
         super(props);
         this.checkIfFavoriteEmpty = this.checkIfFavoriteEmpty.bind(this);
     }
-
+    
 
     checkIfFavoriteEmpty() {
         if(!this.props.favorite) {
