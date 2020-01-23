@@ -49,7 +49,7 @@ export class App extends Component {
       ]
     });
     console.log(this.state.favorite)
-    // this.sendFavorite()
+    this.sendFavorite()
 
   }
 
