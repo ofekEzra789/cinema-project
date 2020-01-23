@@ -26,9 +26,7 @@ export class App extends Component {
   // user = JSON.parse(localStorage.user);
   
   componentDidMount() {
-    // localStorage.user !== undefined
-    //       ? this.setState({ isLogged: true })
-    //       : this.setState({ isLogged: false })
+   this.sendFavorite()
   }
 
   addMovie(
@@ -50,6 +48,8 @@ export class App extends Component {
         }
       ]
     });
+    this.sendFavorite()
+
   }
 
   removeMovie(itemId) {
