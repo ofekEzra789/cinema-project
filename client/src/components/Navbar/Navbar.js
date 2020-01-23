@@ -5,11 +5,25 @@ import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from
 
 
 export class Navbar extends Component {
-   
+   constructor(props) {
+       super(props);
+       this.handleLogout = this.handleLogout.bind(this);
+       this.state = {
+           logged: localStorage.length < 1 ? false : true 
+       }
+   }
+
+   handleLogout() {
+    this.props.changeLoggedToFalse()
+   }
+
+   componentDidUpdate(prevProps, prevState) {
+       
+   }
     
     render() {
         let {isLogged} = this.props
-        if(isLogged) {
+        if(this.state.logged) {
             return (
                 <div className="Navbar">
                 <nav className="Navbar-nav">
@@ -27,7 +41,7 @@ export class Navbar extends Component {
                                 <DropdownItem><NavLink exact activeClassName="activeLink" to="/search/genre/adventure">Adventure</NavLink></DropdownItem>
                             </DropdownMenu>
                     </UncontrolledDropdown>
-                    <NavLink exact activeClassName="activeLink" className="login" to='/'>Logout</NavLink>
+                    <NavLink exact activeClassName="activeLink" onClick={this.handleLogout} className="logout" to='/'>Logout</NavLink>
                 </nav>
             </div>
             )

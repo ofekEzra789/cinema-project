@@ -15,19 +15,20 @@ export class App extends Component {
     super(props);
     this.state = {
       favorite: [],
-      isLogged: false
+      isLogged: localStorage.length < 1 ? false : true 
     };
     this.addMovie = this.addMovie.bind(this);
     this.removeMovie = this.removeMovie.bind(this);
     this.checkIfLogged = this.checkIfLogged.bind(this);
     this.sendFavorite = this.sendFavorite.bind(this);
+    this.changeLoggedToFalse = this.changeLoggedToFalse.bind(this)
   }
-  user = JSON.parse(localStorage.user);
+  // user = JSON.parse(localStorage.user);
   
   componentDidMount() {
-    localStorage.user !== undefined
-          ? this.setState({ isLogged: true })
-          : this.setState({ isLogged: false })
+    // localStorage.user !== undefined
+    //       ? this.setState({ isLogged: true })
+    //       : this.setState({ isLogged: false })
   }
 
   addMovie(
@@ -67,8 +68,14 @@ export class App extends Component {
     this.setState({ isLogged: true });
   }
 
+  
+  changeLoggedToFalse() {
+    // this.setState({ isLogged: false });
+    localStorage.removeItem('user')
+  }
+
   sendFavorite() {
-    axios.post("/favorites", {
+    axios.post("account/users/favorites", {
       favorites: this.state.favorite
     });
   }
@@ -77,7 +84,7 @@ export class App extends Component {
     return (
       <div className="App">
         
-        <Navbar isLogged={this.state.isLogged} />
+        <Navbar isLogged={this.state.isLogged} changeLoggedToFalse={this.changeLoggedToFalse}/>
         <Switch>
           <Route exact path="/" render={() => <Home />}></Route>
           <Route
