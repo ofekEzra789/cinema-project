@@ -3,7 +3,8 @@ import {
     Card, CardImg, CardText, CardBody,
     Button, CardTitle
 } from 'reactstrap';
-import './WishListItem.css'
+import './WishListItem.css';
+import axios from 'axios';
 
 export class WishListItem extends Component {
     constructor(props) {
@@ -12,7 +13,17 @@ export class WishListItem extends Component {
     }
 
     handleRemoveMovie() {
-        this.props.removeMovie(this.props.id)
+        this.props.removeMovie(this.props.id);
+
+        const user = JSON.parse(localStorage.getItem('user'));
+        axios.delete(`http://localhost:5000/account/users/favoritesList/${user._id}/${this.props.id}`, {
+            userId: user._id,
+            movieId: this.props.id
+        }).then((res) => {
+            console.log(res.data)
+        }).catch((err) => {
+            console.log(err)
+        })
     }
     
     render() {

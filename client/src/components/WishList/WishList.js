@@ -11,8 +11,9 @@ export class WishList extends Component {
         this.state = {
             favorites: []
         }
+        this.removeMovie = this.removeMovie.bind(this);
     }
-    
+
     componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'));
         axios.get(`http://localhost:5000/account/users/favoritesList/${user._id}`, {
@@ -23,7 +24,19 @@ export class WishList extends Component {
         }).catch((err) => {
             console.log(err)
         })
-        
+    }
+
+    removeMovie(itemId) {
+        const itemToRemove = this.state.favorites.findIndex(fav => {
+          return fav.newMovieId === itemId;
+        });
+        console.log(itemToRemove);
+    
+        const tempArray = [...this.state.favorites];
+        tempArray.splice(itemToRemove, 1);
+    
+        this.setState({ favorites: tempArray });
+
     }
 
     checkIfFavoriteEmpty() {
@@ -44,7 +57,7 @@ export class WishList extends Component {
                             src={movie.newMovieImg}
                             releaseDate={movie.newMovieReleaseDate}
                             rating={movie.newMoviRating}
-                            removeMovie={this.props.removeMovie}
+                            removeMovie={this.removeMovie}
                             />
                         </Col>
                     )}    

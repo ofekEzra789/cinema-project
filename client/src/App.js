@@ -19,7 +19,7 @@ export class App extends Component {
       isLogged: localStorage.length < 1 ? false : true
     };
     this.addMovie = this.addMovie.bind(this);
-    this.removeMovie = this.removeMovie.bind(this);
+    // this.removeMovie = this.removeMovie.bind(this);
     this.checkIfLogged = this.checkIfLogged.bind(this);
     this.sendFavorite = this.sendFavorite.bind(this);
     this.changeLoggedToFalse = this.changeLoggedToFalse.bind(this)
@@ -29,11 +29,7 @@ export class App extends Component {
   componentDidMount() {
     //  this.sendFavorite()
     console.log(localStorage.length);
-
-
   }
-
-
 
   addMovie(
     newMovieId,
@@ -66,18 +62,7 @@ export class App extends Component {
 
   }
 
-  removeMovie(itemId) {
-    const itemToRemove = this.state.favorite.findIndex(fav => {
-      return fav.newMovieId === itemId;
-    });
-    console.log(itemToRemove);
-
-    const tempArray = [...this.state.favorite];
-    tempArray.splice(itemToRemove, 1);
-
-    this.setState({ favorite: tempArray });
-  }
-
+ 
   checkIfLogged() {
     const isLogged = !this.state.isLogged
     this.setState({ isLogged: isLogged });
