@@ -150,7 +150,7 @@ function getFavorite(req, res) {
 }
 //Delete
 function handleDelete(array, req, res) {
-    const id = req.params.id;
+    // const id = req.params.userId
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
         if (err) {
             console.log(err);
