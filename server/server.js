@@ -1,11 +1,9 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const router = express.Router();
-const app = express();
 const routeHelper = require('./routeHelper')
 
-// app.use(bodyParser.urlencoded({ extended: false }));
+const app = express();
 app.use(express.json());
 app.use(cors());
 
@@ -22,6 +20,10 @@ app.post("/account/users/login", (req, res) => {
 app.post("/account/users/favorites", (req, res) => {
     routeHelper.favorites(req, res);
 });
+//Get 
+app.get("/account/users/favorites", (req, res) => {
+    routeHelper.favorites(req, res);
+})
 //handleDelete
 app.delete("/account/users/favorites/:id", (req, res) => {
     routeHelper.handleDelete(routeHelper.favorites, req, res);
