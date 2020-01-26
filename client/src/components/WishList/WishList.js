@@ -27,7 +27,7 @@ export class WishList extends Component {
     }
 
     checkIfFavoriteEmpty() {
-        if(!this.props.favorite) {
+        if(!this.state.favorites) {
             return (
                 <div>
                     <h2>List is Empty...</h2>
@@ -36,7 +36,7 @@ export class WishList extends Component {
         } else {
             return (
                 <Row>
-                    {this.props.favorite.map(movie =>
+                    {this.state.favorites.map(movie =>
                         <Col key={movie.newMovieId} sm="6" md="4" lg="3" >
                             <WishListItem 
                             id={movie.newMovieId}

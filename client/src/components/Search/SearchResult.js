@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import SearchItem from "./SearchItem";
 import "./SearchResult.css";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
