@@ -119,7 +119,7 @@ function favorites(req, res) {
 };
 //Get
 function getFavorite(req, res) {
-    console.log("/users/favorites is accessed");
+    console.log("/users/favoritesList is accessed");
 
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
         if (err) {
@@ -127,9 +127,8 @@ function getFavorite(req, res) {
             return res.sendStatus(500);
         }
         const dbo = db.db(dbName);
-        const userId = req.body.userId;
-        const favorite = req.body.favorites
-        console.log(req.body.userId)
+        const userId = req.params.id;
+        console.log(userId)
 
         dbo.collection(collectionName).findOne({ "_id": ObjectId(userId) }, function (err, user) {
             if (err) {
@@ -139,8 +138,6 @@ function getFavorite(req, res) {
 
             if (user) {
                 if (user.favorites) {
-                    // const favArray = user.favorites;
-                    // dbo.collection(collectionName).post({ "_id": ObjectId(userId) }, { $set: { "favorites": favArray } })
                     return res.status(200).send(user.favorites);
                 }
             } else {

@@ -21,8 +21,7 @@ app.post("/account/users/favorites", (req, res) => {
     routeHelper.favorites(req, res);
 });
 //Get 
-app.get("/account/users/favorites", (req, res) => {
-
+app.get("/account/users/favoritesList/:id", (req, res) => {
     routeHelper.getFavorite(req, res);
 })
 //handleDelete

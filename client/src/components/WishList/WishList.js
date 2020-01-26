@@ -18,7 +18,7 @@ export class WishList extends Component {
         axios.get(`http://localhost:5000/account/users/favoritesList/${user._id}`, {
             userId: user._id
         }).then((res) => {
-            console.log(res.status)
+            console.log(res.data)
             this.setState({ favorites: res.data })
         }).catch((err) => {
             console.log(err)
