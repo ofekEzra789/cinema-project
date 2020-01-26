@@ -13,9 +13,17 @@ export class WishList extends Component {
         }
     }
     
-    async componentDidMount() {
-        const response = await axios.get('http://localhost:5000/account/users/favorites');
-        console.log(response.data);
+    componentDidMount() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        axios.get(`http://localhost:5000/account/users/favorites/${user._id}`, {
+            userId: user._id
+        }).then((res) => {
+            console.log(res.status)
+            this.setState({ favorites: res.data })
+        }).catch((err) => {
+            console.log(err)
+        })
+        
     }
 
     checkIfFavoriteEmpty() {
