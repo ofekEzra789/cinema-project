@@ -15,7 +15,7 @@ export class WishList extends Component {
     
     componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'));
-        axios.get(`http://localhost:5000/account/users/favorites/${user._id}`, {
+        axios.get(`http://localhost:5000/account/users/favoritesList/${user._id}`, {
             userId: user._id
         }).then((res) => {
             console.log(res.status)
