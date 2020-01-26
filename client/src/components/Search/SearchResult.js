@@ -63,9 +63,11 @@ export class SearchResult extends Component {
   }
 
   limitPageNumber() {
-    if (this.state.page > 20 || this.state.page < 1) {
+    if (this.state.page > 20) {
       alert('Number of pages exceeded')
-      this.setState(() => ({ page: 1 }))
+      this.setState({ page: 20 })
+    } else if (this.state.page < 1) {
+      this.setState({ page: 1 })
     }
   }
 
@@ -97,6 +99,7 @@ export class SearchResult extends Component {
   }
 
   render() {
+    {this.limitPageNumber()}
     return (
       <div className="SearchResult">
         <Pagination className="d-flex justify-content-center  my-3" size="md" aria-label="Page navigation example">

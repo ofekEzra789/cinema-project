@@ -46,7 +46,7 @@ export class Navbar extends Component {
                                 <DropdownItem><NavLink exact activeClassName="activeLink" to="/search/genre/adventure">Adventure</NavLink></DropdownItem>
                             </DropdownMenu>
                     </UncontrolledDropdown>
-                    <NavLink exact activeClassName="activeLink" onClick={this.handleLogout} className="logout" to='/'>Logout</NavLink>
+                    <NavLink exact activeClassName="activeLink" onClick={this.handleLogout} className="logout" to='#'>Logout</NavLink>
                 </nav>
             </div>
             )
