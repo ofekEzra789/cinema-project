@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import './WishList.css';
 import {Row, Col, Container} from 'reactstrap';
 import WishListItem from './WishListItem';
+import axios from 'axios';
 
 export class WishList extends Component {
     constructor(props) {
         super(props);
         this.checkIfFavoriteEmpty = this.checkIfFavoriteEmpty.bind(this);
+        this.state = {
+            favorites: []
+        }
     }
     
+    async componentDidMount() {
+        const response = await axios.get('http://localhost:5000/account/users/favorites');
+        console.log(response.data);
+    }
 
     checkIfFavoriteEmpty() {
         if(!this.props.favorite) {
