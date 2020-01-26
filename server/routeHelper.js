@@ -149,8 +149,8 @@ function getFavorite(req, res) {
 
 }
 //Delete
-function handleDelete(array, req, res) {
-    // const id = req.params.userId
+function handleDelete(req, res) {
+    
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
         if (err) {
             console.log(err);
@@ -159,14 +159,13 @@ function handleDelete(array, req, res) {
         const dbo = db.db(dbName);
         const userId = req.params.userId;
         const movieId = req.params.movieId;
-        console.log(movieId);
-        
+
 
         console.log(userId)
-        dbo.collection(collectionName).deleteOne({ "_id": ObjectId(userId) }, function (err, user) {
+        dbo.collection(collectionName).findOne({ "_id": ObjectId(userId) }, function (err, user) {
             // --- check if movie exist , if not send 404
             console.log(movieId);
-            
+
             if (err) {
                 console.log(err);
                 return res.sendStatus(500);
@@ -174,7 +173,12 @@ function handleDelete(array, req, res) {
             // -- movie found
             if (user) {
                 if (user.favorites) {
-                    return res.status(200).send(user.movieId);
+                    filteredFavorites = user.favorites.filter(favorite => { favorite.newMovieId !== movieId });
+                    user = { $set: { favorites: filteredFavorites } }
+                    dbo.collection(collectionName).updateOne({ "_id": ObjectId(userId) }, user, function (err, user) {
+                        return res.status(200).send("deleeted");
+                    })
+
                 }
             }
             // --- not found

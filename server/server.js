@@ -25,7 +25,7 @@ app.get("/account/users/favoritesList/:id", (req, res) => {
     routeHelper.getFavorite(req, res);
 })
 //handleDelete
-app.delete("/account/users/favoritesList/:movieId", (req, res) => {
+app.delete("/account/users/favoritesList/:userId/:movieId", (req, res) => {
     routeHelper.handleDelete(req, res);
 })
 // Port
