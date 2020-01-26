@@ -22,7 +22,8 @@ app.post("/account/users/favorites", (req, res) => {
 });
 //Get 
 app.get("/account/users/favorites", (req, res) => {
-    routeHelper.favorites(req, res);
+
+    routeHelper.getFavorite(req, res);
 })
 //handleDelete
 app.delete("/account/users/favorites/:id", (req, res) => {

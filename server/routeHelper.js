@@ -118,7 +118,7 @@ function favorites(req, res) {
     });
 };
 //Get
-function get(req, res) {
+function getFavorite(req, res) {
     console.log("/users/favorites is accessed");
 
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
@@ -139,9 +139,9 @@ function get(req, res) {
 
             if (user) {
                 if (user.favorites) {
-                    const favArray = user.favorites;
-                    dbo.collection(collectionName).get({ "_id": ObjectId(userId) }, { $set: { "favorites": favArray } })
-                    return res.status(200).send(favArray);
+                    // const favArray = user.favorites;
+                    // dbo.collection(collectionName).post({ "_id": ObjectId(userId) }, { $set: { "favorites": favArray } })
+                    return res.status(200).send(user.favorites);
                 }
             } else {
                 return res.sendStatus(404);
@@ -170,5 +170,5 @@ function handleDelete(array, req, res) {
 module.exports.signUp = signUp;
 module.exports.login = login;
 module.exports.favorites = favorites;
-module.exports.get = get;
+module.exports.getFavorite = getFavorite;
 module.exports.handleDelete = handleDelete;
