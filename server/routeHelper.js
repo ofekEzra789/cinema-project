@@ -78,7 +78,7 @@ function signUp(req, res) {
 };
 
 // WishList
-function favorites(req, res) {
+function addFavorites(req, res) {
     console.log("/users/favorites is accessed");
 
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
@@ -151,21 +151,42 @@ function getFavorite(req, res) {
 //Delete
 function handleDelete(array, req, res) {
     const id = req.params.id;
-    // --- check if movie exist , if not send 404
-    const index = array.findIndex(item => item.id == id);
-    if (index == -1) {
-        // --- not found
-        res.sendStatus(404);
-    }
-    else {
-        // -- movie found
-        array.splice(index, 1);
-        res.sendStatus(200);
-    }
+    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+        if (err) {
+            console.log(err);
+            return res.sendStatus(500);
+        }
+        const dbo = db.db(dbName);
+        const userId = req.params.userId;
+        const movieId = req.params.movieId;
+        console.log(movieId);
+        
+
+        console.log(userId)
+        dbo.collection(collectionName).deleteOne({ "_id": ObjectId(userId) }, function (err, user) {
+            // --- check if movie exist , if not send 404
+            console.log(movieId);
+            
+            if (err) {
+                console.log(err);
+                return res.sendStatus(500);
+            }
+            // -- movie found
+            if (user) {
+                if (user.favorites) {
+                    return res.status(200).send(user.movieId);
+                }
+            }
+            // --- not found
+            else {
+                return res.sendStatus(404);
+            }
+        });
+    });
 }
 
 module.exports.signUp = signUp;
 module.exports.login = login;
-module.exports.favorites = favorites;
+module.exports.addFavorites = addFavorites;
 module.exports.getFavorite = getFavorite;
 module.exports.handleDelete = handleDelete;

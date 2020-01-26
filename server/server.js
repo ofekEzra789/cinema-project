@@ -18,15 +18,15 @@ app.post("/account/users/login", (req, res) => {
 });
 // wishList
 app.post("/account/users/favorites", (req, res) => {
-    routeHelper.favorites(req, res);
+    routeHelper.addFavorites(req, res);
 });
 //Get 
 app.get("/account/users/favoritesList/:id", (req, res) => {
     routeHelper.getFavorite(req, res);
 })
 //handleDelete
-app.delete("/account/users/favorites/:id", (req, res) => {
-    routeHelper.handleDelete(routeHelper.favorites, req, res);
+app.delete("/account/users/favoritesList/:movieId", (req, res) => {
+    routeHelper.handleDelete(req, res);
 })
 // Port
 const port = 5000 || process.env.PORT ;
