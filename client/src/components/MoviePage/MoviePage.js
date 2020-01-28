@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './MoviePage.css';
 import axios from 'axios';
 
+
 const key = "api_key=f35b8795c5a78c90b11cf249e92b1995&language=en-US";
 const baseUrl = "https://api.themoviedb.org/3/movie";
 const baseImgUrlBackdrop = 'https://image.tmdb.org/t/p/original/';  // Backdrop_Path
@@ -27,6 +28,7 @@ export class MoviePage extends Component {
             console.log(err)
         })
     }
+
 
     render() {
         const {movieInfo} = this.state
@@ -54,9 +56,10 @@ export class MoviePage extends Component {
 
                                 <div className="moviePage-moreDescription">
                                     <p className="year">Year: {movieInfo.release_date.slice(0, 4)}</p>
-                                    <p className="rating">Rating: {movieInfo.vote_average}</p>
-                                    <p className="runtime">Runtime: {movieInfo.runtime}</p>
-                                    <p className="revenue">Revenue: {movieInfo.revenue}</p>
+                                    <p className="rating d-flex align-items-center">Rating: {movieInfo.vote_average}  <i className="em em-star mx-2" aria-label="WHITE MEDIUM STAR"></i></p>
+                                    <p className="runtime">Runtime: {movieInfo.runtime} minutes</p>
+
+                                    <button className="btn btn-dark align-self-start">Back To Movies</button>
                                 </div>
                             </div>
                         </div>

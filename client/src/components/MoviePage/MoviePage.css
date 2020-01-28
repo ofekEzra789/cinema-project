@@ -24,7 +24,7 @@
 }
 
 .MoviePage-img__container {
-    flex: 0 0 20%;
+    /* flex: 0 0 30%; */
 } 
 
 .MoviePage-img__container img {
@@ -48,10 +48,15 @@
 }
 
 .MoviePage-genres__container {
+    flex-wrap: wrap;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
     margin: 1rem 0;
+}
+
+.MoviePage-genres__container > * {
+    margin: 0.6rem;
 }
 
 .MoviePage-genres {
@@ -62,6 +67,12 @@
     padding: 0.5rem 1rem;
     border-radius: 5px;
     color: #5b5656;
+}
+
+.moviePage-overview__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .moviePage-overview {
@@ -75,5 +86,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.moviePage-moreDescription > * {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1056px) {
+    .MoviePage-main {
+        flex-wrap: wrap;
+    }
+
+    .MoviePage-img__container  {
+        margin: auto;
+    }
 }
 
