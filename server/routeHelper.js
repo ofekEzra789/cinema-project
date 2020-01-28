@@ -173,7 +173,12 @@ function handleDelete(req, res) {
             // -- movie found
             if (user) {
                 if (user.favorites) {
-                    filteredFavorites = user.favorites.filter(favorite => { favorite.newMovieId !== movieId });
+                    console.log("user.favorites");
+                    console.log(user.favorites);
+                    filteredFavorites = user.favorites.filter(favorite => favorite.newMovieId != movieId );
+                    console.log("filteredFavorites");
+                    console.log(filteredFavorites);
+                    
                     user = { $set: { favorites: filteredFavorites } }
                     dbo.collection(collectionName).updateOne({ "_id": ObjectId(userId) }, user, function (err, user) {
                         return res.status(200).send("deleeted");
