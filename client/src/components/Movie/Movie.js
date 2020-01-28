@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Card, CardImg, CardBody,
+    Card, CardImg,
     CardTitle
 } from 'reactstrap';
 import './Movie.css';

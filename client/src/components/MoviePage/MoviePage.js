@@ -15,6 +15,7 @@ export class MoviePage extends Component {
             movieId : this.props.location.pathname.slice(7),
             movieInfo: ""
         }
+        this.goBack = this.goBack.bind(this)
     }
 
     componentDidMount() {
@@ -29,6 +30,9 @@ export class MoviePage extends Component {
         })
     }
 
+    goBack() {
+        this.props.history.goBack()
+    }
 
     render() {
         const {movieInfo} = this.state
@@ -59,7 +63,7 @@ export class MoviePage extends Component {
                                     <p className="rating d-flex align-items-center">Rating: {movieInfo.vote_average}  <i className="em em-star mx-2" aria-label="WHITE MEDIUM STAR"></i></p>
                                     <p className="runtime">Runtime: {movieInfo.runtime} minutes</p>
 
-                                    <button className="btn btn-dark align-self-start">Back To Movies</button>
+                                    <button className="btn btn-dark align-self-start" onClick={this.goBack}>Back To Movies</button>
                                 </div>
                             </div>
                         </div>

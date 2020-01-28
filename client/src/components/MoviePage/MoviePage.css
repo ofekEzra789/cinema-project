@@ -98,7 +98,13 @@
     }
 
     .MoviePage-img__container  {
-        margin: auto;
+        flex: 0 0 100%;
+    }
+
+    .MoviePage-img__container img {
+        height: 20rem;
+        object-fit: cover;
+        object-position: center;
     }
 }
 
