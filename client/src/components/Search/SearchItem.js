@@ -34,7 +34,7 @@ export class SearchItem extends Component {
                             <CardTitle className="CardTitle">{this.props.title}</CardTitle>
                             <CardText>Release Year: {this.props.releaseDate}</CardText>
                             <CardText>Rating: {this.props.rating}</CardText>
-                            <div className="card-Button">
+                            <div style={this.props.isLogged ? null : {display: "none"}} className="card-Button">
                                 {/* <Button>Buy Ticket </Button> */}
                                 {iconHeart}
                             </div>

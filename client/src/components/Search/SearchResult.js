@@ -84,6 +84,7 @@ export class SearchResult extends Component {
                 releaseDate={movie.release_date}
                 rating={movie.vote_average}
                 addMovie={this.props.addMovie}
+                isLogged={this.props.isLogged}
               />
             </Col>
           ))}

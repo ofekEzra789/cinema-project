@@ -120,6 +120,7 @@ export class App extends Component {
                 addMovie={this.addMovie}
                 {...routeProps}
                 favorite={this.state.favorite}
+                isLogged={this.state.isLogged}
               />
             )}
           ></Route>
