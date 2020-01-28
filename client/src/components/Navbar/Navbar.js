@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
 import './Navbar.css';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
@@ -9,13 +9,18 @@ export class Navbar extends Component {
        super(props);
        this.handleLogout = this.handleLogout.bind(this);
        this.state = {
-           logged: localStorage.length < 1 ? false : true 
+           logged: localStorage.length < 1 ? false : true ,
+           redirectToHome: false
        }
    }
 
    handleLogout() {
-    this.props.changeLoggedToFalse()
-   }
+    this.props.changeLoggedToFalse();
+    this.setState({ redirectToHome: true });
+    if (this.state.redirectToHome) {
+        return <Redirect to="/" />;     
+        }
+    }
 
    componentDidUpdate(prevProps, preveState) {
        console.log(prevProps, preveState);
@@ -46,7 +51,7 @@ export class Navbar extends Component {
                                 <DropdownItem><NavLink exact activeClassName="activeLink" to="/search/genre/adventure">Adventure</NavLink></DropdownItem>
                             </DropdownMenu>
                     </UncontrolledDropdown>
-                    <NavLink exact activeClassName="activeLink" onClick={this.handleLogout} className="logout" to='#'>Logout</NavLink>
+                    <NavLink exact activeClassName="activeLink" onClick={this.handleLogout} className="logout" to='/'>Logout</NavLink>
                 </nav>
             </div>
             )

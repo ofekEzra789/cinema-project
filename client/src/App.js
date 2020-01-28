@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Search from "./components/Search/Search";
 import WishList from "./components/WishList/WishList";
+import MoviePage from './components/MoviePage/MoviePage'
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 
@@ -135,6 +136,7 @@ export class App extends Component {
               />
             )}
           ></Route>
+          <Route exact to="/movie/:id" render={(routeProps) => <MoviePage {...routeProps}/>}></Route>
         </Switch>
         <Footer />
       </div>

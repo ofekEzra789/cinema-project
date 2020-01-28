@@ -3,7 +3,8 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle
 } from 'reactstrap';
-import './Movie.css'
+import './Movie.css';
+import {Link} from 'react-router-dom';
 
 export class Movie extends Component {
     render() {
@@ -16,7 +17,7 @@ export class Movie extends Component {
                             <CardText>Release Year: {this.props.releaseDate}</CardText>
                             <CardText>Rating: {this.props.rating}</CardText>
                             <div className="card-Button">
-                                {/* <i className="em em-black_heart ml-2"  aria-label="BLACK HEART"></i> */}
+                                <Link className="btn btn-info" to={`/movie/${this.props.id}`}>More Info</Link>
                             </div>
                         </CardBody>
                     </Card>

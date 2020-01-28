@@ -10,6 +10,8 @@ const baseUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`;
 const baseImgUrl = "https://image.tmdb.org/t/p/w500";
 
 export class SearchResult extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +27,8 @@ export class SearchResult extends Component {
   }
 
   async componentDidMount() {
+    this._isMounted = true;
+
     let urlWithParams = `${baseUrl}&page=${
       this.state.page
     }&with_genres=${this.props.checkGenre()}`;
@@ -46,12 +50,20 @@ export class SearchResult extends Component {
     //}
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   nextPage() {
-    this.setState(st => ({ page: st.page + 1 }));
+    this.setState(st => ({ page: st.page + 1 }), () => {
+      this.limitPageNumber()
+    });
   }
 
   prevPage() {
-    this.setState(st => ({ page: st.page - 1 }));
+    this.setState(st => ({ page: st.page - 1 }), () => {
+      this.limitPageNumber()
+    });
   }
 
   firstPage() {
@@ -65,9 +77,10 @@ export class SearchResult extends Component {
   limitPageNumber() {
     if (this.state.page > 20) {
       alert('Number of pages exceeded')
-      this.setState({ page: 20 })
+      this.setState(() => ({ page: 20 }))
     } else if (this.state.page < 1) {
-      this.setState({ page: 1 })
+      alert('Number of pages exceeded')
+      this.setState(() => ({ page: 1 }))
     }
   }
 
@@ -100,7 +113,8 @@ export class SearchResult extends Component {
   }
 
   render() {
-    {this.limitPageNumber()}
+
+
     return (
       <div className="SearchResult">
         <Pagination className="d-flex justify-content-center  my-3" size="md" aria-label="Page navigation example">
@@ -122,7 +136,6 @@ export class SearchResult extends Component {
         </Pagination>
 
         {this.checkIfDataAvailable()}
-
 
         <Pagination className="d-flex justify-content-center my-3 text-danger"  size="md" aria-label="Page navigation example">
           <PaginationItem>

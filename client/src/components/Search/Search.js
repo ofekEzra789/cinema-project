@@ -11,6 +11,8 @@ const genresId = {
 }
 
 export class Search extends Component {
+    _isMounted = false;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +23,9 @@ export class Search extends Component {
         // this.findGenere = this.findGenere.bind(this);
     }
 
-    
+    componentDidMount() {
+        this._isMounted = true;
+    }
 
     checkGenre() {
         const whichGenre = this.props.match.params.genre;
@@ -37,10 +41,15 @@ export class Search extends Component {
         }
         return temp
     }
+
     componentDidUpdate(prevProps,prevState){
         if (prevProps.match.params.genre !== this.props.match.params.genre) {
             this.setState({title: this.props.match.params.genre})
         }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
    
     render() {
