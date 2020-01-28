@@ -1,3 +1,79 @@
 .MoviePage {
     min-height: calc(100vh - 2rem);
 }
+
+.MoviePage-header {
+    height: 50vh;
+}
+
+.MoviePage-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.MoviePage-main {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.MoviePage-main > *:not(:last-child) {
+    margin-right: 1.5rem;
+}
+
+.MoviePage-img__container {
+    flex: 0 0 20%;
+} 
+
+.MoviePage-img__container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.MoviePage__description > * {
+    margin-bottom: 1.5rem;
+}
+
+.MoviePage__description h2 {
+    text-align: left;
+    font-size: 3rem;
+    background-image: linear-gradient(120deg, #29323c, #485563);
+    background-clip: text;
+    color: transparent;
+    align-self: baseline;
+}
+
+.MoviePage-genres__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin: 1rem 0;
+}
+
+.MoviePage-genres {
+    font-size: 1rem;
+    /* margin: 0 1rem; */
+    margin-right: 1rem;
+    background-color: #f5eaea;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #5b5656;
+}
+
+.moviePage-overview {
+    text-align: left;
+    font-size: 1.2rem;
+    hyphens: auto;
+}
+
+.moviePage-moreDescription {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+

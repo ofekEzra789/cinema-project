@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Card, CardImg, CardText, CardBody,
+    Card, CardImg, CardBody,
     CardTitle
 } from 'reactstrap';
 import './Movie.css';
@@ -11,15 +11,11 @@ export class Movie extends Component {
         return (
             <div className="Movie" >
                    <Card className="Movie-Card">
-                        <CardImg className="Card-Img"  src={this.props.src} alt={this.props.title}></CardImg>
-                        <CardBody>
+                       <div className="Movie-Card-layout">
                             <CardTitle className="CardTitle">{this.props.title}</CardTitle>
-                            <CardText>Release Year: {this.props.releaseDate}</CardText>
-                            <CardText>Rating: {this.props.rating}</CardText>
-                            <div className="card-Button">
-                                <Link className="btn btn-info" to={`/movie/${this.props.id}`}>More Info</Link>
-                            </div>
-                        </CardBody>
+                            <Link  to={`/movie/${this.props.id}`}>More Info</Link>
+                       </div>
+                        <CardImg className="Card-Img"  src={this.props.src} alt={this.props.title}></CardImg>
                     </Card>
             </div>
         )
