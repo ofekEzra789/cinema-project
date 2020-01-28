@@ -7,13 +7,15 @@ const key = "api_key=f35b8795c5a78c90b11cf249e92b1995&language=en-US";
 const baseUrl = "https://api.themoviedb.org/3/movie";
 const baseImgUrlBackdrop = 'https://image.tmdb.org/t/p/original/';  // Backdrop_Path
 const baseImgUrlPoster = 'https://image.tmdb.org/t/p/w500/';  // Backdrop_Path
+const videoUrl = "https://www.youtube.com/embed/"
 
 export class MoviePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             movieId : this.props.location.pathname.slice(7),
-            movieInfo: ""
+            movieInfo: "",
+            trailer: ""
         }
         this.goBack = this.goBack.bind(this)
     }
@@ -22,8 +24,19 @@ export class MoviePage extends Component {
         const {movieId} = this.state
         axios.get(`${baseUrl}/${movieId}?${key}`)
         .then((res) => {
-            console.log(res.data)
             this.setState({ movieInfo: res.data})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+        // Second Request for Videos 
+
+        axios.get(`${baseUrl}/${movieId}/videos?${key}`)
+        .then((res) => {
+            const videoKey = res.data.results[0].key;
+            this.setState({ trailer: `${videoUrl}${videoKey}` })
+            console.log(this.state.trailer)
         })
         .catch((err) => {
             console.log(err)
@@ -62,6 +75,10 @@ export class MoviePage extends Component {
                                     <p className="year">Year: {movieInfo.release_date.slice(0, 4)}</p>
                                     <p className="rating d-flex align-items-center">Rating: {movieInfo.vote_average}  <i className="em em-star mx-2" aria-label="WHITE MEDIUM STAR"></i></p>
                                     <p className="runtime">Runtime: {movieInfo.runtime} minutes</p>
+
+                                    <iframe className="iframe m-2" width="420" height="315"
+                                        src={this.state.trailer}>
+                                    </iframe>
 
                                     <button className="btn btn-dark align-self-start" onClick={this.goBack}>Back To Movies</button>
                                 </div>

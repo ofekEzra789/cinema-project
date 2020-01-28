@@ -3,7 +3,7 @@
 }
 
 .MoviePage-header {
-    height: 50vh;
+    height: 60vh;
 }
 
 .MoviePage-header img {
@@ -107,4 +107,6 @@
         object-position: center;
     }
 }
+
+
 
