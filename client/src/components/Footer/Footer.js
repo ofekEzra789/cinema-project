@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Footer.css';
-import {Container} from 'reactstrap'
+import {Container} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 export class Footer extends Component {
     render() {

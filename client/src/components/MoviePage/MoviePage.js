@@ -76,7 +76,7 @@ export class MoviePage extends Component {
                                     <p className="rating d-flex align-items-center">Rating: {movieInfo.vote_average}  <i className="em em-star mx-2" aria-label="WHITE MEDIUM STAR"></i></p>
                                     <p className="runtime">Runtime: {movieInfo.runtime} minutes</p>
 
-                                    <iframe className="iframe m-2" width="420" height="315"
+                                    <iframe title={movieInfo.title} className="iframe m-2" width="420" height="315"
                                         src={this.state.trailer}>
                                     </iframe>
 
