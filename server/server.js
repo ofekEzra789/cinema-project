@@ -24,6 +24,10 @@ app.post("/account/users/favorites", (req, res) => {
 app.get("/account/users/favoritesList/:id", (req, res) => {
     routeHelper.getFavorite(req, res);
 })
+//Get onWishList
+app.get("/account/users/onWishList/:id", (req, res) => {
+    routeHelper.onWishList(req, res);
+})
 //handleDelete
 app.delete("/account/users/favoritesList/:userId/:movieId", (req, res) => {
     routeHelper.handleDelete(req, res);
