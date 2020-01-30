@@ -29,17 +29,19 @@ export class App extends Component {
 
   componentDidMount() {
     //  this.sendFavorite()
-    console.log(localStorage.length);
-    const user = JSON.parse(localStorage.getItem('user'));
-    axios.get(`http://localhost:5000/account/users/onWishList/${user._id}`)
-    .then((res) => {
-        this.setState({ favorite: res.data })
-        console.log(this.state.favorite)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    // console.log(localStorage.length);
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // axios.get(`http://localhost:5000/account/users/onWishList/${user._id}`)
+    // .then((res) => {
+    //     this.setState({ favorite: res.data })
+    //     console.log(this.state.favorite)
+    // })
+    // .catch((err) => {
+    //   console.log(err)
+    // })
   }
+
+  
 
   addMovie(
     newMovieId,
