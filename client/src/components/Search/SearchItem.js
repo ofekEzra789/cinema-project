@@ -23,9 +23,9 @@ export class SearchItem extends Component {
     render() {
         let iconHeart;
         if(this.state.onWishList) {
-            iconHeart = <i style={{fontSize: "2rem", color: "black"}} className="em em-heart ml-2" aria-label="HEAVY BLACK HEART"></i>
+            iconHeart = <i className="fas fa-heart" style={{fontSize: "3rem" ,color: "crimson"}} ></i>
         } else {
-            iconHeart = <i style={{fontSize: "2rem", color: "black"}} onClick={this.handleAddMovie} className="em em-black_heart ml-2"  aria-label="BLACK HEART"></i>
+            iconHeart = <i className="far fa-heart" onClick={this.handleAddMovie} style={{fontSize: "3rem", color: "crimson"}}></i>
         }
         return (
             <div className="Movie" >

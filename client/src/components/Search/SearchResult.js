@@ -26,27 +26,33 @@ export class SearchResult extends Component {
     this.limitPageNumber = this.limitPageNumber.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this._isMounted = true;
+    let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`;
 
-    let urlWithParams = `${baseUrl}&page=${
-      this.state.page
-    }&with_genres=${this.props.checkGenre()}`;
-    const response = await axios.get(urlWithParams);
-    this.setState({ moviesArray: response.data.results, isLoading: false });
+    axios.get(urlWithParams)
+    .then((response) => {
+      this.setState({ moviesArray: response.data.results, isLoading: false });
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
-  async componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     //if (this.state.page !== prevState.page) {
-    let urlWithParams = `${baseUrl}&page=${
-      this.state.page
-    }&with_genres=${this.props.checkGenre()}`;
-    const response = await axios.get(urlWithParams);
-    this.setState({
-      moviesArray: response.data.results,
-      isLoading: false,
-      title: this.props.title
-    });
+    let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`;
+    axios.get(urlWithParams)
+    .then((response) => {
+      this.setState({
+        moviesArray: response.data.results,
+        isLoading: false,
+        title: this.props.title
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+    })
     //}
   }
 
@@ -88,6 +94,7 @@ export class SearchResult extends Component {
     if (!this.state.isLoading) {
       return (
         <Row>
+          
           {this.state.moviesArray.map(movie => (
             <Col key={movie.id} sm="6" md="4" lg="3">
               <SearchItem
