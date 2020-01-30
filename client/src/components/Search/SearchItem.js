@@ -16,8 +16,9 @@ export class SearchItem extends Component {
     }
 
     handleAddMovie() {
-        this.props.addMovie(this.props.id, this.props.title, this.props.src, this.props.releaseDate, this.props.rating);
-        this.setState({ onWishList: true })
+        this.setState({ onWishList: true }, () => {
+            this.props.addMovie(this.props.id, this.props.title, this.props.src, this.props.releaseDate, this.props.rating, this.state.onWishList);
+        })
     }
 
     render() {

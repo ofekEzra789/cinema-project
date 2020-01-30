@@ -90,11 +90,14 @@ export class SearchResult extends Component {
     }
   }
 
+  isOnWhishList() {
+    // 
+  }
+
   checkIfDataAvailable() {
     if (!this.state.isLoading) {
       return (
         <Row>
-          
           {this.state.moviesArray.map(movie => (
             <Col key={movie.id} sm="6" md="4" lg="3">
               <SearchItem

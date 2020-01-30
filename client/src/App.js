@@ -30,6 +30,15 @@ export class App extends Component {
   componentDidMount() {
     //  this.sendFavorite()
     console.log(localStorage.length);
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.get(`http://localhost:5000/account/users/onWishList/${user._id}`)
+    .then((res) => {
+        this.setState({ favorite: res.data })
+        console.log(this.state.favorite)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   addMovie(
@@ -37,14 +46,16 @@ export class App extends Component {
     newMovieTitle,
     newMovieImg,
     newMovieReleaseDate,
-    newMoviRating
+    newMoviRating,
+    isOnWishList
   ) {
     this.sendFavorite({
       newMovieId,
       newMovieTitle,
       newMovieImg,
       newMovieReleaseDate,
-      newMoviRating
+      newMoviRating,
+      isOnWishList
     })
     this.setState({
       favorite: [
@@ -54,7 +65,8 @@ export class App extends Component {
           newMovieTitle,
           newMovieImg,
           newMovieReleaseDate,
-          newMoviRating
+          newMoviRating,
+          isOnWishList
         }
       ]
     });
