@@ -21,16 +21,6 @@ export class Footer extends Component {
                         <li>Lorem</li>
                     </ul>
                 </div>
-
-                <div className="Footer-contact">
-                    <h2>Contact Us</h2>
-                    <ul>
-                        <li>Icon-1</li>
-                        <li>Icon-2</li>
-                        <li>Icon-3</li>
-                        <li>Icon-4</li>
-                    </ul>
-                </div>
                 </Container>
             </div>
         )

@@ -12,6 +12,7 @@ export class WishList extends Component {
             favorites: []
         }
         this.removeMovie = this.removeMovie.bind(this);
+        this.handleSetWishListOnParent = this.handleSetWishListOnParent.bind(this);
     }
 
     componentDidMount() {
@@ -20,10 +21,16 @@ export class WishList extends Component {
             userId: user._id
         }).then((res) => {
             console.log(res.data)
-            this.setState({ favorites: res.data })
+            this.setState({ favorites: res.data }, () => {
+                this.handleSetWishListOnParent()
+            })
         }).catch((err) => {
             console.log(err)
         })
+    }
+
+    handleSetWishListOnParent() {
+        this.props.setWishListOnParent(this.state.favorites)
     }
 
     removeMovie(itemId) {

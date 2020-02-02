@@ -91,7 +91,8 @@ export class SearchResult extends Component {
   }
 
   isOnWhishList() {
-    // 
+    // isOnWishList
+    // this.props.favorite.
   }
 
   checkIfDataAvailable() {
@@ -108,6 +109,7 @@ export class SearchResult extends Component {
                 rating={movie.vote_average}
                 addMovie={this.props.addMovie}
                 isLogged={this.props.isLogged}
+                favorite={this.props.favorite}
               />
             </Col>
           ))}

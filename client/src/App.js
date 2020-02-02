@@ -23,23 +23,15 @@ export class App extends Component {
     // this.removeMovie = this.removeMovie.bind(this);
     this.checkIfLogged = this.checkIfLogged.bind(this);
     this.sendFavorite = this.sendFavorite.bind(this);
-    this.changeLoggedToFalse = this.changeLoggedToFalse.bind(this)
+    this.changeLoggedToFalse = this.changeLoggedToFalse.bind(this);
+    this.setWishListOnParent = this.setWishListOnParent.bind(this)
   }
   // user = JSON.parse(localStorage.user);
 
-  componentDidMount() {
-    //  this.sendFavorite()
-    // console.log(localStorage.length);
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // axios.get(`http://localhost:5000/account/users/onWishList/${user._id}`)
-    // .then((res) => {
-    //     console.log(res.data)
-    // })
-    // .catch((err) => {
-    //   console.log(err)
-    // })
+  setWishListOnParent(items) {
+      this.setState({ favorite: items })
   }
-
+  
   addMovie(
     newMovieId,
     newMovieTitle,
@@ -144,6 +136,7 @@ export class App extends Component {
                 favorite={this.state.favorite}
                 sendFavorite={this.sendFavorite}
                 removeMovie={this.removeMovie}
+                setWishListOnParent={this.setWishListOnParent}
               />
             )}
           ></Route>

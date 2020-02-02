@@ -21,6 +21,7 @@ export class SearchItem extends Component {
         })
     }
 
+
     render() {
         let iconHeart;
         if(this.state.onWishList) {

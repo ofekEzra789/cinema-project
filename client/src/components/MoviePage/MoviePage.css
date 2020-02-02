@@ -101,9 +101,13 @@
         flex: 0 0 100%;
     }
 
+    .MoviePage__description {
+        text-align: center !important;
+    }
+
     .MoviePage-img__container img {
         height: 20rem;
-        object-fit: cover;
+        object-fit:  cover;
         object-position: top;
     }
 }
