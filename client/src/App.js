@@ -24,14 +24,9 @@ export class App extends Component {
     this.checkIfLogged = this.checkIfLogged.bind(this);
     this.sendFavorite = this.sendFavorite.bind(this);
     this.changeLoggedToFalse = this.changeLoggedToFalse.bind(this);
-    this.setWishListOnParent = this.setWishListOnParent.bind(this)
   }
   // user = JSON.parse(localStorage.user);
 
-  setWishListOnParent(items) {
-      this.setState({ favorite: items })
-  }
-  
   addMovie(
     newMovieId,
     newMovieTitle,
