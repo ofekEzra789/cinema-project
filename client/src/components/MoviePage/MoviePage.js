@@ -86,8 +86,8 @@ export class MoviePage extends Component {
                                     <p className="rating d-flex align-items-center">Rating: {movieInfo.vote_average}  <i className="em em-star mx-2" aria-label="WHITE MEDIUM STAR"></i></p>
                                     <p className="runtime">Runtime: {movieInfo.runtime} minutes</p>
 
-                                    <iframe title={movieInfo.title} className="iframe my-2" width="420" height="315"
-                                        src={this.state.trailer}>
+                                    <iframe frameborder="0" allowFullScreen allow="autoplay" title={movieInfo.title} className="iframe my-2" width="500" height="315"
+                                        src={`${this.state.trailer}?&autoplay=1`}>
                                     </iframe>
 
                                     <button className="btn btn-dark align-self-start my-2" onClick={this.goBack}>Back To Movies</button>

@@ -50,22 +50,21 @@ export class SearchResult extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let urlWithParams = `${baseUrl}&page=${
-      this.state.page
-    }&with_genres=${this.props.checkGenre()}`;
-    axios
-      .get(urlWithParams)
-      .then(response => {
-        this.setState({
-          moviesArray: response.data.results,
-          isLoading: false,
-          title: this.props.title
+      let urlWithParams = `${baseUrl}&page=${
+        this.state.page
+      }&with_genres=${this.props.checkGenre()}`;
+      axios
+        .get(urlWithParams)
+        .then(response => {
+          this.setState({
+            moviesArray: response.data.results,
+            isLoading: false,
+            title: this.props.title
+          });
+        })
+        .catch(err => {
+          console.log(err);
         });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
   }
 
   componentWillUnmount() {
@@ -146,24 +145,30 @@ export class SearchResult extends Component {
     if(!this.state.isFoucs) {
       return this.checkIfDataAvailable()
     } else {
-      return (
-        <Row>
-          {this.state.moviesSearch.map(movie => (
-            <Col key={movie.id} sm="6" md="4" lg="3">
-              <SearchItem
-                id={movie.id}
-                title={movie.title}
-                src={`${baseImgUrl}/${movie.poster_path}`}
-                releaseDate={movie.release_date}
-                rating={movie.vote_average}
-                addMovie={this.props.addMovie}
-                isLogged={this.props.isLogged}
-                favorite={this.props.favorite}
-              />
-            </Col>
-          ))}
-        </Row>
-      );
+      if(this.state.moviesSearch) {
+        return (
+          <Row>
+            {this.state.moviesSearch.map(movie => (
+              <Col key={movie.id} sm="6" md="4" lg="3">
+                <SearchItem
+                  id={movie.id}
+                  title={movie.title}
+                  src={`${baseImgUrl}/${movie.poster_path}`}
+                  releaseDate={movie.release_date}
+                  rating={movie.vote_average}
+                  addMovie={this.props.addMovie}
+                  isLogged={this.props.isLogged}
+                  favorite={this.props.favorite}
+                />
+              </Col>
+            ))}
+          </Row>
+        );
+      } else {
+        return (
+          <div className="spinner-border" role="status"></div>
+        )
+      } 
     }
   }
 
@@ -176,10 +181,11 @@ export class SearchResult extends Component {
     e.preventDefault();
     axios.get(`${baseSearchUrl}&language=en-US&query=${this.state.movieName}`)
     .then((res) => {
-      this.setState({ moviesSearch: res.data.results })
+      this.setState({ moviesSearch: res.data.results})
     }).catch((err) => {
       console.log(err)
     })
+    
   }
 
   render() {
