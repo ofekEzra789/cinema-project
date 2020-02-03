@@ -48,21 +48,13 @@ export class WishListItem extends Component {
             <Link to={`/movie/${this.props.id}`}>More Info</Link>
             <Link to="/">Buy Ticket</Link>
             <i
-              class="em em-x"
-              aria-role="presentation"
-              aria-label="CROSS MARK"
+              className="em em-x"
               onClick={this.handleRemoveMovie}
             ></i>
           </div>
-          {/* <CardBody>
-                        <CardTitle>{this.props.title}</CardTitle>
-                        <CardText>Release Year: {this.props.releaseDate}</CardText>
-                        <CardText>Rating: {this.props.rating}</CardText>
-                        <div className="card-Button">
-                            <Button>Buy Ticket </Button>
-                        </div>
-                    </CardBody> */}
         </Card>
+
+        
       </div>
     );
   }

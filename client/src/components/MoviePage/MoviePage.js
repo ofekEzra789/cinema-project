@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './MoviePage.css';
 import axios from 'axios';
-
+import {Container} from 'reactstrap';
+import Seats from './Seats';
 
 const key = "api_key=f35b8795c5a78c90b11cf249e92b1995&language=en-US";
 const baseUrl = "https://api.themoviedb.org/3/movie";
@@ -10,14 +11,20 @@ const baseImgUrlPoster = 'https://image.tmdb.org/t/p/w500/';  // Backdrop_Path
 const videoUrl = "https://www.youtube.com/embed/"
 
 export class MoviePage extends Component {
+    static defaultProps = {
+        chanceSeatTaken: 0.35
+    }
     constructor(props) {
         super(props);
         this.state = {
             movieId : this.props.location.pathname.slice(7),
             movieInfo: "",
-            trailer: ""
+            trailer: "",
+            seatsSelectionInfo: [],
+            seats: Array.from({ length: 78}, () => Math.random() < this.props.chanceSeatTaken) 
         }
-        this.goBack = this.goBack.bind(this)
+        this.goBack = this.goBack.bind(this);
+        this.isSeatTaken = this.isSeatTaken.bind(this);
     }
 
     componentDidMount() {
@@ -42,6 +49,11 @@ export class MoviePage extends Component {
             console.log(err)
         })
     }
+
+    isSeatTaken() {
+        return Math.random() < this.props.chanceSeatTaken;
+    };
+
 
     goBack() {
         this.props.history.goBack()
@@ -84,8 +96,27 @@ export class MoviePage extends Component {
                                 </div>
                             </div>
                         </div>
-
                     </main>
+
+                    <section className="tickets">
+                        <Container>
+                            <h1 className="ticket-header">Seats Available </h1>
+                        </Container>
+
+                        <Container className="Seats-places">
+                            <div className="Seats-container">
+                                {this.state.seats.map((seat,index) => 
+                                    <Seats isTaken={seat}/>
+                                )}
+
+                                <h4 className="Seats-screen">Screen</h4>
+                            </div>
+
+                            <div className="total-amount">
+                                <h2>Total Amount is:</h2>
+                            </div>
+                        </Container>
+                    </section>
                 </div>
             )
         } else {

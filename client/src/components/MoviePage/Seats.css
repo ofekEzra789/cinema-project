@@ -1,0 +1,13 @@
+.Seats {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Seats-spot {
+    display: inline-block;
+}
