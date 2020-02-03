@@ -21,7 +21,8 @@ export class SearchResult extends Component {
       page: 1,
       isLoading: true,
       movieName: "",
-      moviesSearch: []
+      moviesSearch: [],
+      isFoucs: false
     };
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
@@ -49,7 +50,6 @@ export class SearchResult extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //if (this.state.page !== prevState.page) {
     let urlWithParams = `${baseUrl}&page=${
       this.state.page
     }&with_genres=${this.props.checkGenre()}`;
@@ -65,7 +65,7 @@ export class SearchResult extends Component {
       .catch(err => {
         console.log(err);
       });
-    //}
+
   }
 
   componentWillUnmount() {
@@ -142,19 +142,44 @@ export class SearchResult extends Component {
     }
   }
 
+  ifInputOnFoucs() {
+    if(!this.state.isFoucs) {
+      return this.checkIfDataAvailable()
+    } else {
+      return (
+        <Row>
+          {this.state.moviesSearch.map(movie => (
+            <Col key={movie.id} sm="6" md="4" lg="3">
+              <SearchItem
+                id={movie.id}
+                title={movie.title}
+                src={`${baseImgUrl}/${movie.poster_path}`}
+                releaseDate={movie.release_date}
+                rating={movie.vote_average}
+                addMovie={this.props.addMovie}
+                isLogged={this.props.isLogged}
+                favorite={this.props.favorite}
+              />
+            </Col>
+          ))}
+        </Row>
+      );
+    }
+  }
+
   handleSearchChange(e) {
-    this.setState({ [e.target.name] : e.target.value });
+    let whatMovie = e.target.value.replace(' ', '%20')
+    this.setState({ [e.target.name] : whatMovie , isFoucs: !this.state.isFoucs });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     axios.get(`${baseSearchUrl}&language=en-US&query=${this.state.movieName}`)
     .then((res) => {
-      this.setState({ moviesSearch: res.data })
+      this.setState({ moviesSearch: res.data.results })
     }).catch((err) => {
       console.log(err)
     })
-
   }
 
   render() {
@@ -163,7 +188,7 @@ export class SearchResult extends Component {
         <div className="search-container">
           <div className="search-option">
             <form onSubmit={this.handleSubmit} className="my-2" noValidate autoComplete="off">
-              <TextField onChange={this.handleSearchChange} value={this.state.movieName} name="movieName" onChange={this.handleSearchChange} id="standard-basic" label="Search"/>
+              <TextField onChange={this.handleSearchChange}  value={this.state.movieName} name="movieName" onChange={this.handleSearchChange} id="outlined-basic" variant="filled" label="Search"/>
             </form>
           </div>
 
@@ -192,7 +217,7 @@ export class SearchResult extends Component {
           </div>
         </div>
 
-        {this.checkIfDataAvailable()}
+        {this.state.isFoucs ? this.ifInputOnFoucs() : this.checkIfDataAvailable()}
 
         <Pagination
           className="d-flex justify-content-center my-3 text-danger"
