@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './MoviePage.css';
 import axios from 'axios';
-import {Container} from 'reactstrap';
-import Seats from './Seats';
 
 const key = "api_key=f35b8795c5a78c90b11cf249e92b1995&language=en-US";
 const baseUrl = "https://api.themoviedb.org/3/movie";
@@ -97,26 +95,6 @@ export class MoviePage extends Component {
                             </div>
                         </div>
                     </main>
-
-                    <section className="tickets">
-                        <Container>
-                            <h1 className="ticket-header">Seats Available </h1>
-                        </Container>
-
-                        <Container className="Seats-places">
-                            <div className="Seats-container">
-                                {this.state.seats.map((seat,index) => 
-                                    <Seats isTaken={seat}/>
-                                )}
-
-                                <h4 className="Seats-screen">Screen</h4>
-                            </div>
-
-                            <div className="total-amount">
-                                <h2>Total Amount is:</h2>
-                            </div>
-                        </Container>
-                    </section>
                 </div>
             )
         } else {

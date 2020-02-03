@@ -4,9 +4,11 @@ import { Row, Col } from "reactstrap";
 import SearchItem from "./SearchItem";
 import "./SearchResult.css";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import TextField from "@material-ui/core/TextField";
 
 const apiKey = "f35b8795c5a78c90b11cf249e92b1995";
 const baseUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`;
+const baseSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}`
 const baseImgUrl = "https://image.tmdb.org/t/p/w500";
 
 export class SearchResult extends Component {
@@ -17,42 +19,52 @@ export class SearchResult extends Component {
     this.state = {
       moviesArray: [],
       page: 1,
-      isLoading: true
+      isLoading: true,
+      movieName: "",
+      moviesSearch: []
     };
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
     this.firstPage = this.firstPage.bind(this);
     this.lastPage = this.lastPage.bind(this);
     this.limitPageNumber = this.limitPageNumber.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     this._isMounted = true;
-    let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`;
+    let urlWithParams = `${baseUrl}&page=${
+      this.state.page
+    }&with_genres=${this.props.checkGenre()}`;
 
-    axios.get(urlWithParams)
-    .then((response) => {
-      this.setState({ moviesArray: response.data.results, isLoading: false });
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    axios
+      .get(urlWithParams)
+      .then(response => {
+        this.setState({ moviesArray: response.data.results, isLoading: false });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {
     //if (this.state.page !== prevState.page) {
-    let urlWithParams = `${baseUrl}&page=${this.state.page}&with_genres=${this.props.checkGenre()}`;
-    axios.get(urlWithParams)
-    .then((response) => {
-      this.setState({
-        moviesArray: response.data.results,
-        isLoading: false,
-        title: this.props.title
+    let urlWithParams = `${baseUrl}&page=${
+      this.state.page
+    }&with_genres=${this.props.checkGenre()}`;
+    axios
+      .get(urlWithParams)
+      .then(response => {
+        this.setState({
+          moviesArray: response.data.results,
+          isLoading: false,
+          title: this.props.title
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err)
-    })
     //}
   }
 
@@ -61,15 +73,21 @@ export class SearchResult extends Component {
   }
 
   nextPage() {
-    this.setState(st => ({ page: st.page + 1 }), () => {
-      this.limitPageNumber()
-    });
+    this.setState(
+      st => ({ page: st.page + 1 }),
+      () => {
+        this.limitPageNumber();
+      }
+    );
   }
 
   prevPage() {
-    this.setState(st => ({ page: st.page - 1 }), () => {
-      this.limitPageNumber()
-    });
+    this.setState(
+      st => ({ page: st.page - 1 }),
+      () => {
+        this.limitPageNumber();
+      }
+    );
   }
 
   firstPage() {
@@ -82,11 +100,11 @@ export class SearchResult extends Component {
 
   limitPageNumber() {
     if (this.state.page > 20) {
-      alert('Number of pages exceeded')
-      this.setState(() => ({ page: 20 }))
+      alert("Number of pages exceeded");
+      this.setState(() => ({ page: 20 }));
     } else if (this.state.page < 1) {
-      alert('Number of pages exceeded')
-      this.setState(() => ({ page: 1 }))
+      alert("Number of pages exceeded");
+      this.setState(() => ({ page: 1 }));
     }
   }
 
@@ -124,46 +142,77 @@ export class SearchResult extends Component {
     }
   }
 
+  handleSearchChange(e) {
+    this.setState({ [e.target.name] : e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    axios.get(`${baseSearchUrl}&language=en-US&query=${this.state.movieName}`)
+    .then((res) => {
+      this.setState({ moviesSearch: res.data })
+    }).catch((err) => {
+      console.log(err)
+    })
+
+  }
+
   render() {
-
-
     return (
       <div className="SearchResult">
-        <Pagination className="d-flex justify-content-center  my-3" size="md" aria-label="Page navigation example">
-          <PaginationItem>
-            <PaginationLink first onClick={this.firstPage}  />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink onClick={this.prevPage} previous  />
-          </PaginationItem>
-          <PaginationItem>
-          <PaginationLink href="#">{this.state.page}</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink onClick={this.nextPage} next  />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink last onClick={this.lastPage}  />
-          </PaginationItem>
-        </Pagination>
+        <div className="search-container">
+          <div className="search-option">
+            <form onSubmit={this.handleSubmit} className="my-2" noValidate autoComplete="off">
+              <TextField onChange={this.handleSearchChange} value={this.state.movieName} name="movieName" onChange={this.handleSearchChange} id="standard-basic" label="Search"/>
+            </form>
+          </div>
+
+          <div className="search-page">
+            <Pagination
+              className="d-flex justify-content-center"
+              size="md"
+              aria-label="Page navigation example"
+            >
+              <PaginationItem>
+                <PaginationLink first onClick={this.firstPage} />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink onClick={this.prevPage} previous />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">{this.state.page}</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink onClick={this.nextPage} next />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink last onClick={this.lastPage} />
+              </PaginationItem>
+            </Pagination>
+          </div>
+        </div>
 
         {this.checkIfDataAvailable()}
 
-        <Pagination className="d-flex justify-content-center my-3 text-danger"  size="md" aria-label="Page navigation example">
+        <Pagination
+          className="d-flex justify-content-center my-3 text-danger"
+          size="md"
+          aria-label="Page navigation example"
+        >
           <PaginationItem>
-            <PaginationLink first onClick={this.firstPage}  />
+            <PaginationLink first onClick={this.firstPage} />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink onClick={this.prevPage} previous  />
+            <PaginationLink onClick={this.prevPage} previous />
           </PaginationItem>
           <PaginationItem>
-          <PaginationLink href="#">{this.state.page}</PaginationLink>
+            <PaginationLink href="#">{this.state.page}</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink onClick={this.nextPage} next  />
+            <PaginationLink onClick={this.nextPage} next />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink last onClick={this.lastPage}  />
+            <PaginationLink last onClick={this.lastPage} />
           </PaginationItem>
         </Pagination>
       </div>

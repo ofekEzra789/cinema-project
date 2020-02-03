@@ -46,7 +46,6 @@ export class WishListItem extends Component {
           <div className="wishList-overlay">
             <CardTitle className="CardTitle">{this.props.title}</CardTitle>
             <Link to={`/movie/${this.props.id}`}>More Info</Link>
-            <Link to="/">Buy Ticket</Link>
             <i
               className="em em-x"
               onClick={this.handleRemoveMovie}
