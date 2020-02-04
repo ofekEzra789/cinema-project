@@ -37,6 +37,8 @@ export class SearchResult extends Component {
 
   componentDidMount() {
     this._isMounted = true;
+    console.log("mount");
+    
     let urlWithParams = `${baseUrl}&page=${
       this.state.page
     }&with_genres=${this.props.checkGenre()}`;
@@ -53,6 +55,7 @@ export class SearchResult extends Component {
   }
 
   // componentDidUpdate(prevProps, prevState) {
+    
   //   let urlWithParams = `${baseUrl}&page=${
   //     this.state.page
   //   }&with_genres=${this.props.checkGenre()}`;
@@ -169,16 +172,16 @@ export class SearchResult extends Component {
   }
 
   handleSearchChange(e) {
-    let whatMovie = e.target.value.replace(" ", "%20");
-    this.setState({ [e.target.name]: whatMovie, isFoucs: !this.state.isFoucs });
+    this.whatMovie = e.target.value;
+    // this.setState({ [e.target.name]: whatMovie, isFoucs: !this.state.isFoucs });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     axios
-      .get(`${baseSearchUrl}&language=en-US&query=${this.state.movieName}`)
+      .get(`${baseSearchUrl}&language=en-US&query=${this.whatMovie}`)
       .then(res => {
-        this.setState({ moviesSearch: res.data.results });
+        this.setState({ moviesSearch: res.data.results ,isFoucs:true});
       })
       .catch(err => {
         console.log(err);
@@ -214,7 +217,7 @@ export class SearchResult extends Component {
             >
               <TextField
                 onChange={this.handleSearchChange}
-                value={this.state.movieName}
+                // value={this.state.movieName}
                 name="movieName"
                 onChange={this.handleSearchChange}
                 id="outlined-basic"
