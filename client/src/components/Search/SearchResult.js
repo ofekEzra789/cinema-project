@@ -25,6 +25,7 @@ export class SearchResult extends Component {
       isFoucs: false,
       favorites: []
     };
+    this.whatMovie = "";
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
     this.firstPage = this.firstPage.bind(this);
