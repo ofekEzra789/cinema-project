@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 
 const apiKey = "f35b8795c5a78c90b11cf249e92b1995";
 const baseUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`;
-const baseSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}`
+const baseSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}`;
 const baseImgUrl = "https://image.tmdb.org/t/p/w500";
 
 export class SearchResult extends Component {
@@ -22,7 +22,8 @@ export class SearchResult extends Component {
       isLoading: true,
       movieName: "",
       moviesSearch: [],
-      isFoucs: false
+      isFoucs: false,
+      favorites: []
     };
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
@@ -43,6 +44,7 @@ export class SearchResult extends Component {
       .get(urlWithParams)
       .then(response => {
         this.setState({ moviesArray: response.data.results, isLoading: false });
+        this.isOnWishList()
       })
       .catch(err => {
         console.log(err);
@@ -50,21 +52,21 @@ export class SearchResult extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-      let urlWithParams = `${baseUrl}&page=${
-        this.state.page
-      }&with_genres=${this.props.checkGenre()}`;
-      axios
-        .get(urlWithParams)
-        .then(response => {
-          this.setState({
-            moviesArray: response.data.results,
-            isLoading: false,
-            title: this.props.title
-          });
-        })
-        .catch(err => {
-          console.log(err);
+    let urlWithParams = `${baseUrl}&page=${
+      this.state.page
+    }&with_genres=${this.props.checkGenre()}`;
+    axios
+      .get(urlWithParams)
+      .then(response => {
+        this.setState({
+          moviesArray: response.data.results,
+          isLoading: false,
+          title: this.props.title
         });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   componentWillUnmount() {
@@ -107,10 +109,6 @@ export class SearchResult extends Component {
     }
   }
 
-  isOnWhishList() {
-    // isOnWishList
-    // this.props.favorite.
-  }
 
   checkIfDataAvailable() {
     if (!this.state.isLoading) {
@@ -126,7 +124,6 @@ export class SearchResult extends Component {
                 rating={movie.vote_average}
                 addMovie={this.props.addMovie}
                 isLogged={this.props.isLogged}
-                favorite={this.props.favorite}
               />
             </Col>
           ))}
@@ -142,10 +139,10 @@ export class SearchResult extends Component {
   }
 
   ifInputOnFoucs() {
-    if(!this.state.isFoucs) {
-      return this.checkIfDataAvailable()
+    if (!this.state.isFoucs) {
+      return this.checkIfDataAvailable();
     } else {
-      if(this.state.moviesSearch) {
+      if (this.state.moviesSearch) {
         return (
           <Row>
             {this.state.moviesSearch.map(movie => (
@@ -165,36 +162,64 @@ export class SearchResult extends Component {
           </Row>
         );
       } else {
-        return (
-          <div className="spinner-border" role="status"></div>
-        )
-      } 
+        return <div className="spinner-border" role="status"></div>;
+      }
     }
   }
 
   handleSearchChange(e) {
-    let whatMovie = e.target.value.replace(' ', '%20')
-    this.setState({ [e.target.name] : whatMovie , isFoucs: !this.state.isFoucs });
+    let whatMovie = e.target.value.replace(" ", "%20");
+    this.setState({ [e.target.name]: whatMovie, isFoucs: !this.state.isFoucs });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    axios.get(`${baseSearchUrl}&language=en-US&query=${this.state.movieName}`)
-    .then((res) => {
-      this.setState({ moviesSearch: res.data.results})
-    }).catch((err) => {
-      console.log(err)
-    })
-    
+    axios
+      .get(`${baseSearchUrl}&language=en-US&query=${this.state.movieName}`)
+      .then(res => {
+        this.setState({ moviesSearch: res.data.results });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
+  isOnWishList() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userId = user._id;
+    axios
+      .get(`http://localhost:5000/account/users/onWishList/${userId}`)
+      .then(res => {
+        console.log(res.data);
+        console.log(res.status);
+        this.setState({ favorites: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  
   render() {
     return (
       <div className="SearchResult">
         <div className="search-container">
           <div className="search-option">
-            <form onSubmit={this.handleSubmit} className="my-2" noValidate autoComplete="off">
-              <TextField onChange={this.handleSearchChange}  value={this.state.movieName} name="movieName" onChange={this.handleSearchChange} id="outlined-basic" variant="filled" label="Search"/>
+            <form
+              onSubmit={this.handleSubmit}
+              className="my-2"
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
+                onChange={this.handleSearchChange}
+                value={this.state.movieName}
+                name="movieName"
+                onChange={this.handleSearchChange}
+                id="outlined-basic"
+                variant="filled"
+                label="Search"
+              />
             </form>
           </div>
 
@@ -223,7 +248,9 @@ export class SearchResult extends Component {
           </div>
         </div>
 
-        {this.state.isFoucs ? this.ifInputOnFoucs() : this.checkIfDataAvailable()}
+        {this.state.isFoucs
+          ? this.ifInputOnFoucs()
+          : this.checkIfDataAvailable()}
 
         <Pagination
           className="d-flex justify-content-center my-3 text-danger"

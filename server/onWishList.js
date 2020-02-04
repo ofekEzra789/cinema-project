@@ -1,3 +1,9 @@
+const MongoClient = require("mongodb").MongoClient;
+const url = "mongodb://localhost:27017/";
+const dbName = "cinema",
+  collectionName = "users";
+const ObjectId = require("mongodb").ObjectId;
+
 //Get onWishList
 function onWishList(req, res) {
   console.log("/users/onWishList is accessed");

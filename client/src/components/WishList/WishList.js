@@ -16,10 +16,11 @@ export class WishList extends Component {
 
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem("user"));
-    axios.get(`http://localhost:5000/account/users/favoritesList/${user._id}`, {
+    axios
+      .get(`http://localhost:5000/account/users/favoritesList/${user._id}`, {
         userId: user._id
       })
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         this.setState({ favorites: res.data });
       })
@@ -27,7 +28,6 @@ export class WishList extends Component {
         console.log(err);
       });
   }
-
 
   removeMovie(itemId) {
     const itemToRemove = this.state.favorites.findIndex(fav => {
