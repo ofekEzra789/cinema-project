@@ -52,23 +52,23 @@ export class SearchResult extends Component {
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    let urlWithParams = `${baseUrl}&page=${
-      this.state.page
-    }&with_genres=${this.props.checkGenre()}`;
-    axios
-      .get(urlWithParams)
-      .then(response => {
-        this.setState({
-          moviesArray: response.data.results,
-          isLoading: false,
-          title: this.props.title
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   let urlWithParams = `${baseUrl}&page=${
+  //     this.state.page
+  //   }&with_genres=${this.props.checkGenre()}`;
+  //   axios
+  //     .get(urlWithParams)
+  //     .then(response => {
+  //       this.setState({
+  //         moviesArray: response.data.results,
+  //         isLoading: false,
+  //         title: this.props.title
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 
   componentWillUnmount() {
     this._isMounted = false;
