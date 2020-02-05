@@ -30,6 +30,8 @@ export class Search extends Component {
 
   checkGenre() {
     const whichGenre = this.props.match.params.genre;
+    console.log('whichGenre', whichGenre);
+    
     let temp;
     if (whichGenre === "action") {
       temp = genresId.Action;
@@ -44,6 +46,7 @@ export class Search extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // componentWillRecieveProps
     if (prevProps.match.params.genre !== this.props.match.params.genre) {
       this.setState({ title: this.props.match.params.genre });
     }
@@ -65,7 +68,7 @@ export class Search extends Component {
           <Container>
             <SearchResult
               addMovie={this.props.addMovie}
-              checkGenre={this.checkGenre}
+              checkGenre={this.checkGenre} //todo move to searchResult component
               genreId={this.state.genre}
               isLogged={this.props.isLogged}
             //   favorite={this.props.favorite}
