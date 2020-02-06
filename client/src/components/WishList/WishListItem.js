@@ -33,7 +33,7 @@ export class WishListItem extends Component {
 
   render() {
     return (
-      <div className="WishListItem">
+      <div className="WishListItem animated fadeIn">
         <Card className="WishListItem-Card">
           <CardImg
             className="WishListItem-Img"

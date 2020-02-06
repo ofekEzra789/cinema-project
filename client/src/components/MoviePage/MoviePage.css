@@ -168,5 +168,11 @@
     background-color: lightcoral;
 }
 
+.button-Movie-Page {
+    align-self: flex-start;
+    margin: 0.8rem 0;
+}
+
+
 
 

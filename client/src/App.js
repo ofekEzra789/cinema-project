@@ -27,7 +27,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    localStorage.user ==undefined ?
+    localStorage.user === undefined ?
     this.setState({isLogged:false})
     : this.setState({isLogged: true});    
   }
