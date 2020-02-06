@@ -30,7 +30,6 @@ export class Search extends Component {
 
   checkGenre() {
     const whichGenre = this.props.match.params.genre;
-    console.log('whichGenre', whichGenre);
     
     let temp;
     if (whichGenre === "action") {
@@ -48,7 +47,7 @@ export class Search extends Component {
   componentDidUpdate(prevProps, prevState) {
     // componentWillRecieveProps
     if (prevProps.match.params.genre !== this.props.match.params.genre) {
-      this.setState({ title: this.props.match.params.genre });
+      this.setState({ title: this.props.match.params.genre, genre: this.props.match.params.genre });
     }
   }
 

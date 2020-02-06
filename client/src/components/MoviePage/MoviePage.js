@@ -87,7 +87,7 @@ export class MoviePage extends Component {
                                     <p className="runtime">Runtime: {movieInfo.runtime} minutes</p>
 
                                     <iframe allowFullScreen allow="autoplay" title={movieInfo.title} className="iframe my-2" width="500" height="315"
-                                        src={`${this.state.trailer}?&autoplay=1`}>
+                                        src={this.state.trailer}>
                                     </iframe>
 
                                     <button className="btn btn-dark align-self-start my-2" onClick={this.goBack}>Back To Movies</button>

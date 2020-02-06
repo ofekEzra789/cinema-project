@@ -33,7 +33,7 @@ export class Navbar extends Component {
         let {isLogged} = this.props
         console.log(isLogged);
         
-        if(this.state.logged) {
+        if(isLogged) {
             return (
                 <div className="Navbar">
                 <nav className="Navbar-nav">

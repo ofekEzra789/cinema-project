@@ -19,6 +19,7 @@ export class SearchResult extends Component {
     this.state = {
       moviesArray: [],
       page: 1,
+      theGenere: this.props.genreId,
       isLoading: true,
       movieName: "",
       moviesSearch: [],
@@ -38,7 +39,7 @@ export class SearchResult extends Component {
   componentDidMount() {
     this._isMounted = true;
     console.log("mount");
-    
+
     let urlWithParams = `${baseUrl}&page=${
       this.state.page
     }&with_genres=${this.props.checkGenre()}`;
@@ -47,31 +48,32 @@ export class SearchResult extends Component {
       .get(urlWithParams)
       .then(response => {
         this.setState({ moviesArray: response.data.results, isLoading: false });
-        this.isOnWishList()
+        this.isOnWishList();
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-    
-  //   let urlWithParams = `${baseUrl}&page=${
-  //     this.state.page
-  //   }&with_genres=${this.props.checkGenre()}`;
-  //   axios
-  //     .get(urlWithParams)
-  //     .then(response => {
-  //       this.setState({
-  //         moviesArray: response.data.results,
-  //         isLoading: false,
-  //         title: this.props.title
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.genreId !== this.props.genreId) {
+      let urlWithParams = `${baseUrl}&page=${
+        this.state.page
+      }&with_genres=${this.props.checkGenre()}`;
+      axios
+        .get(urlWithParams)
+        .then(response => {
+          this.setState({
+            moviesArray: response.data.results,
+            isLoading: false,
+            title: this.props.title
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 
   componentWillUnmount() {
     this._isMounted = false;
@@ -112,7 +114,6 @@ export class SearchResult extends Component {
       this.setState(() => ({ page: 1 }));
     }
   }
-
 
   checkIfDataAvailable() {
     if (!this.state.isLoading) {
@@ -181,7 +182,7 @@ export class SearchResult extends Component {
     axios
       .get(`${baseSearchUrl}&language=en-US&query=${this.whatMovie}`)
       .then(res => {
-        this.setState({ moviesSearch: res.data.results ,isFoucs:true});
+        this.setState({ moviesSearch: res.data.results, isFoucs: true });
       })
       .catch(err => {
         console.log(err);
@@ -203,7 +204,6 @@ export class SearchResult extends Component {
       });
   }
 
-  
   render() {
     return (
       <div className="SearchResult">
