@@ -30,7 +30,7 @@ export class SearchItem extends Component {
             iconHeart = <i className="far fa-heart" onClick={this.handleAddMovie} style={{fontSize: "3rem", color: "crimson"}}></i>
         }
         return (
-            <div className="Movie" >
+            <div className="Movie animated fadeIn">
                 <Card className="Movie-Card">
                     <div className="Movie-Card-layout">
                         <CardTitle className="CardTitle">{this.props.title}</CardTitle>

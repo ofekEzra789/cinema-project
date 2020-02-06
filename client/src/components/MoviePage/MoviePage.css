@@ -1,5 +1,6 @@
 .MoviePage {
     min-height: calc(100vh - 2rem);
+    overflow: hidden;
 }
 
 .MoviePage-header {
@@ -17,6 +18,7 @@
     display: flex;
     justify-content: center;
     margin: 2rem;
+    animation-delay: 0.5s;
 }
 
 .MoviePage-main > *:not(:last-child) {

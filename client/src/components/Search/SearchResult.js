@@ -72,6 +72,22 @@ export class SearchResult extends Component {
         .catch(err => {
           console.log(err);
         });
+    } else if (prevState.page !== this.state.page) {
+      let urlWithParams = `${baseUrl}&page=${
+        this.state.page
+      }&with_genres=${this.props.checkGenre()}`;
+      axios
+        .get(urlWithParams)
+        .then(response => {
+          this.setState({
+            moviesArray: response.data.results,
+            isLoading: false,
+            title: this.props.title
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 
@@ -221,7 +237,6 @@ export class SearchResult extends Component {
                 name="movieName"
                 onChange={this.handleSearchChange}
                 id="outlined-basic"
-                variant="filled"
                 label="Search"
               />
             </form>

@@ -61,12 +61,12 @@ export class MoviePage extends Component {
         const {movieInfo} = this.state
         if(movieInfo) {
             return (
-                <div className="MoviePage">
+                <div className="MoviePage animated fadeInDown">
                     <header className="MoviePage-header">
                         <img src={`${baseImgUrlBackdrop}${movieInfo.backdrop_path}`} alt={movieInfo.title}></img>
                     </header>
     
-                    <main className="MoviePage-main">
+                    <main className="MoviePage-main animated fadeInLeft">
                         <div className="MoviePage-img__container">
                             <img src={`${baseImgUrlPoster}${movieInfo.poster_path}`} alt={movieInfo.title}></img>
                         </div>

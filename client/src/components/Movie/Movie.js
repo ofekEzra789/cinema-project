@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 export class Movie extends Component {
     render() {
         return (
-            <div className="Movie" >
+            <div className="Movie animated fadeIn">
                    <Card className="Movie-Card">
                        <div className="Movie-Card-layout">
                             <CardTitle className="CardTitle">{this.props.title}</CardTitle>
