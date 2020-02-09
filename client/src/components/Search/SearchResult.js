@@ -38,7 +38,6 @@ export class SearchResult extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    console.log("mount");
 
     let urlWithParams = `${baseUrl}&page=${
       this.state.page
@@ -233,9 +232,7 @@ export class SearchResult extends Component {
             >
               <TextField
                 onChange={this.handleSearchChange}
-                // value={this.state.movieName}
                 name="movieName"
-                onChange={this.handleSearchChange}
                 id="outlined-basic"
                 label="Search"
               />

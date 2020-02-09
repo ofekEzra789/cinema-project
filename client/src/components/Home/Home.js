@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Home.css';
-import {Button} from 'reactstrap';
 import {Row, Col, Container} from 'reactstrap';
 import axios from 'axios';
 import Movie from '../Movie/Movie';
+import Button from "@material-ui/core/Button";
 
 const apiKey = 'f35b8795c5a78c90b11cf249e92b1995';
 const baseUrl = 'https://api.themoviedb.org/3/movie';
@@ -53,9 +53,7 @@ export class Home extends Component {
             )
         } else {
             return (
-                <div className="spinner-border" role="status">
-                    {console.log('Is Loading....')}
-                </div>
+                <div className="spinner-border" role="status"></div>
             )
         }
     }
@@ -68,7 +66,7 @@ export class Home extends Component {
                         <Container>
                             <h1 className="Home-headline__primary">Welcome To Ninja Movie Website</h1>
                             <p className="Home-headline__secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit condimentum ligula, et ultricies lectus ligula, et ultricies lectus ligula, et ultricies lectus.</p>
-                            <Button className="Home-headline-button">Into the Site</Button>
+                            <Button className="Home-headline-button" variant="contained" color="secondary" size="medium">To the site</Button>
                         </Container>
                     </div>
                 </div>

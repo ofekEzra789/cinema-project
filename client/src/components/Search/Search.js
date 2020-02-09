@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Search.css";
 import SearchResult from "./SearchResult";
-import axios from "axios";
 import { Container } from "reactstrap";
 
 const genresId = {
@@ -21,7 +20,6 @@ export class Search extends Component {
       title: this.props.match.params.genre
     };
     this.checkGenre = this.checkGenre.bind(this);
-    // this.findGenere = this.findGenere.bind(this);
   }
 
   componentDidMount() {
@@ -45,7 +43,6 @@ export class Search extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // componentWillRecieveProps
     if (prevProps.match.params.genre !== this.props.match.params.genre) {
       this.setState({ title: this.props.match.params.genre, genre: this.props.match.params.genre });
     }
@@ -56,7 +53,6 @@ export class Search extends Component {
   }
 
   render() {
-    console.log(this.props);
 
     return (
       <div className="Search">

@@ -23,7 +23,6 @@ export class Navbar extends Component {
     }
 
    componentDidUpdate(prevProps, preveState) {
-       console.log(prevProps, preveState);
        if (prevProps.isLogged !== this.props.isLogged) {
            this.setState({logged: this.props.isLogged})
        }
@@ -31,7 +30,6 @@ export class Navbar extends Component {
     
     render() {
         let {isLogged} = this.props
-        console.log(isLogged);
         
         if(isLogged) {
             return (

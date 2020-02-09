@@ -75,7 +75,7 @@ export class MoviePage extends Component {
             ></img>
           </header>
 
-          <main className="MoviePage-main animated fadeInLeft">
+          <main className="MoviePage-main animated fadeInUp">
             <div className="MoviePage-img__container">
               <img
                 src={`${baseImgUrlPoster}${movieInfo.poster_path}`}

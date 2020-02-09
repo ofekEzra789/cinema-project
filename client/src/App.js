@@ -91,7 +91,6 @@ export class App extends Component {
   }
 
   render() {
-    console.log(this.state.isLogged);
 
     return (
       <div className="App">
