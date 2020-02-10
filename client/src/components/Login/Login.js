@@ -90,7 +90,7 @@ export class Login extends Component {
             <p className="form-footer-text">
               New user?{" "}
               <span
-                onClick={this.handleClickRedirect}
+                onClick={this.handleClickRedirectsignup}
                 className="text-danger mx-2"
               >
                 SignUp

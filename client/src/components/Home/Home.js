@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
-import {Row, Col, Container} from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import axios from 'axios';
 import Movie from '../Movie/Movie';
 import Button from "@material-ui/core/Button";
@@ -35,21 +35,21 @@ export class Home extends Component {
     }
 
     checkIfDataAvailable(moviesArray) {
-        if(!this.state.isLoading) {
+        if (!this.state.isLoading) {
             return (
                 <Row >
                     {moviesArray.map(movie =>
                         <Col key={movie.id} sm="6" md="4" lg="3" >
-                            <Movie 
-                            id={movie.id}
-                            title={movie.title}
-                            src={`${baseImgUrl}/${movie.poster_path}`}
-                            releaseDate={movie.release_date}
-                            rating={movie.vote_average}
+                            <Movie
+                                id={movie.id}
+                                title={movie.title}
+                                src={`${baseImgUrl}/${movie.poster_path}`}
+                                releaseDate={movie.release_date}
+                                rating={movie.vote_average}
                             />
-                        </Col>    
+                        </Col>
                     )}
-                </Row>        
+                </Row>
             )
         } else {
             return (
@@ -64,24 +64,24 @@ export class Home extends Component {
                 <div className="Home-header">
                     <div className="Home-headline">
                         <Container>
-                            <h1 className="Home-headline__primary">Welcome To Ninja Movie Website</h1>
-                            <p className="Home-headline__secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit condimentum ligula, et ultricies lectus ligula, et ultricies lectus ligula, et ultricies lectus.</p>
-                            <Button className="Home-headline-button" variant="contained" color="secondary" size="medium">To the site</Button>
+                            <h1 className="Home-headline__primary">Welcome To Ninja Movies Website</h1>
+                            <p className="Home-headline__secondary">Ninja movies is a web application that allow memebers to search and find information about movies, and add to a favorite movies to a wishlist for registered members</p>
+                            <Button href="#mainSite" className="Home-headline-button" variant="contained" color="secondary" size="medium">To the site</Button>
                         </Container>
                     </div>
                 </div>
 
                 <div className="Home-main">
-                    <Container className="p-3">
+                    <Container id="mainSite" className="p-3">
                         <h2 className="Home-main-primary">Popular Movies</h2>
-                            {this.checkIfDataAvailable(this.state.popularMovies)} 
+                        {this.checkIfDataAvailable(this.state.popularMovies)}
                     </Container>
 
                     <Container className="p-3">
                         <h2 className="Home-main-primary">Top Rated Movies</h2>
-                            {this.checkIfDataAvailable(this.state.topRatedMovies)} 
+                        {this.checkIfDataAvailable(this.state.topRatedMovies)}
                     </Container>
-                </div>                
+                </div>
             </div>
         )
     }

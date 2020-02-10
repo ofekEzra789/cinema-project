@@ -1,26 +1,35 @@
 import React, { Component } from 'react'
 import './Footer.css';
-import {Container} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import { Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import webLogo from '../Home/webLogo.png'
 
 export class Footer extends Component {
     render() {
         return (
             <div className="Footer">
                 <Container className="Footer-container">
-                <div className="Footer-about">
-                    <h2>About Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum molestie tortor, ut dictum ipsum. Nam venenatis ligula non lectus blandit venenatis. Suspendisse justo magna, suscipit ac blandit et, condimentum eu leo. Ut sed nunc nec massa venenatis pretium quis a turpis. Morbi malesuada odio sem, eu iaculis nibh porttitor vel. Praesent pretium tortor in nibh dapibus, vitae semper erat semper.</p>
-                </div>
-                <div className="Footer-links">
-                    <h2>Quick Links</h2>
-                    <ul>
-                        <li>Lorem</li>
-                        <li>Lorem</li>
-                        <li>Lorem</li>
-                        <li>Lorem</li>
-                    </ul>
-                </div>
+                    <div className="Footer-about">
+                        <h3>About Us</h3>
+                        <p>We are Students of teach career Collage :</p>
+                        <p>Ayenachew Molla , ofek Ezra - Fullstack developers</p>
+                    </div>
+                    <div className="Footer-links">
+                        <h3>Quick Links</h3>
+                        <ul className="Footer-links-list">
+                            <li><Link to="/" className='link-button-footer'>Home</Link></li>
+                            <li><Link to="/account/login" className='link-button-footer'>Login</Link></li>
+                            <li><Link to="/account/signup" className='link-button-footer'>SignUp</Link></li>
+                        </ul>
+                    </div>
+                </Container>
+                <Container className="footer-copywrite">
+                    <div className="footer-Logo">
+                        <img src={webLogo}></img>
+                    </div>
+                    <div >
+                        <small>Copywrite 	&#9400; 2020 Ninja Movies Website</small>
+                    </div>
                 </Container>
             </div>
         )

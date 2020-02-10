@@ -28,7 +28,7 @@ export class Search extends Component {
 
   checkGenre() {
     const whichGenre = this.props.match.params.genre;
-    
+
     let temp;
     if (whichGenre === "action") {
       temp = genresId.Action;
@@ -68,17 +68,17 @@ export class Search extends Component {
               isLogged={this.props.isLogged}
             //   favorite={this.props.favorite}
             //   favorite={
-                  
-                // this.isOnWishList()
+
+            // this.isOnWishList()
             //   }
             />
           </Container>
         </div>
       </div>
     );
-}
+  }
 
 }
-    
+
 
 export default Search;

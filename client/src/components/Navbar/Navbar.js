@@ -35,7 +35,7 @@ export class Navbar extends Component {
             return (
                 <div className="Navbar">
                 <nav className="Navbar-nav">
-                    <h3 className="Navbar-Logo">Ninja Movie</h3>
+                    <h3 className="Navbar-Logo">Ninja Movies</h3>
                     <NavLink exact activeClassName="activeLink" className="home" to='/'>Home</NavLink>
                     <NavLink exact activeClassName="activeLink" className="Wishlist" to='/Wishlist'>Wishlist</NavLink>
                      <UncontrolledDropdown>
@@ -57,7 +57,7 @@ export class Navbar extends Component {
             return (
                 <div className="Navbar">
                     <nav className="Navbar-nav">
-                        <h3 className="Navbar-Logo">Ninja Movie</h3>
+                        <h3 className="Navbar-Logo">Ninja Movies</h3>
                         <NavLink exact activeClassName="activeLink" className="home" to='/'>Home</NavLink>
                          <UncontrolledDropdown>
                                 <DropdownToggle caret>

@@ -2,16 +2,19 @@
     padding: 2rem 0;
     background-color: #4d4646;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .Footer-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    border-bottom: 1px solid grey;
 }
 
 .Footer-about {
-    flex: 0 0 60%;
+    flex: 0 0 50%;
     text-align: left;
 }
 
@@ -20,8 +23,23 @@
 }
 
 .Footer-links li {
-    list-style: none;
+    list-style-type: none;
+    width: 80%;
+}
 
+.Footer-links a {
+    padding: 0.5rem 1.5rem;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.8rem;
+    border-radius: 5px;
+    color: white;
+}
+
+.Footer-links ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .Footer-contact {
@@ -32,6 +50,23 @@
     list-style: none;
 }
 
+.footer-Logo img {
+    width: 100px;
+    height: 100px;
+}
+
+.Footer-container h3:first-of-type {
+    color: #bfd2da;
+}
+
+.footer-copywrite {
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+
 @media only screen and (max-width: 768px) {
     .Footer-container {
         flex-flow: column;
@@ -39,15 +74,21 @@
         align-items: center;
     }
 
+    ul {
+        padding: 0;
+    }
+
     .Footer-about {
         text-align: center;
     }
 
-    .Footer-links  {
+    .Footer-links {
         text-align: center;
     }
 
-    .Footer-contact  {
+    .Footer-contact {
         text-align: center;
     }
 }
+
+
