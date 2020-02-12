@@ -20,8 +20,7 @@ export class SearchItem extends Component {
             this.props.addMovie(this.props.id, this.props.title, this.props.src, this.props.releaseDate, this.props.rating, this.state.onWishList);
         })
     }
-
-
+    
     render() {
         let iconHeart;
         if(this.state.onWishList) {

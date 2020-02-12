@@ -25,7 +25,7 @@ export class Footer extends Component {
                 </Container>
                 <Container className="footer-copywrite">
                     <div className="footer-Logo">
-                        <img src={webLogo}></img>
+                        <img src={webLogo} alt="footer-logo"></img>
                     </div>
                     <div >
                         <small>Copywrite 	&#9400; 2020 Ninja Movies Website</small>
