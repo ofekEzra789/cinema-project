@@ -10,7 +10,7 @@ export class SearchItem extends Component {
         super(props);
         this.handleAddMovie = this.handleAddMovie.bind(this)
         this.state = {
-            onWishList: false,
+            onWishList: this.props.isFavorite,
             movieId: this.props.id
         }
     }
@@ -19,10 +19,17 @@ export class SearchItem extends Component {
         this.setState({ onWishList: true }, () => {
             this.props.addMovie(this.props.id, this.props.title, this.props.src, this.props.releaseDate, this.props.rating, this.state.onWishList);
         })
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.isFavorite !== this.props.isFavorite) {
+            this.setState({ onWishList: this.props.isFavorite })
+        }
     }
 
-
     render() {
+        console.log(this.props.isFavorite)
+        console.log(this.props.favorites)
         let iconHeart;
         if(this.state.onWishList) {
             iconHeart = <i className="fas fa-heart" style={{fontSize: "3rem" ,color: "crimson"}} ></i>

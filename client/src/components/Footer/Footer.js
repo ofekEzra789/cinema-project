@@ -11,7 +11,7 @@ export class Footer extends Component {
                 <Container className="Footer-container">
                     <div className="Footer-about">
                         <h3>About Us</h3>
-                        <p>We are Students of teach career Collage :</p>
+                        <p>We are Students of Teach Career Collage :</p>
                         <p>Ayenachew Molla , ofek Ezra - Fullstack developers</p>
                     </div>
                     <div className="Footer-links">

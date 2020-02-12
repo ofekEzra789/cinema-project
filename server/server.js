@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
 const cors = require("cors");
 const login = require("./login");
 const SignUp = require("./signUp");
@@ -7,17 +8,6 @@ const addFavorites = require("./wishList");
 const getFavorite = require("./getFavorite");
 const handleDelete = require("./handleDelete");
 const onWishList = require("./onWishList");
-
-// const MongoClient = require("mongodb").MongoClient;
-// const url = "mongodb://localhost:27017/";
-// MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
-//   if (err) {
-//     console.log(err);
-//     return res.sendStatus(500);
-//   }
-//   const dbo = db.db("cinema");
-// });
-
 const app = express();
 app.use(express.json());
 app.use(cors());

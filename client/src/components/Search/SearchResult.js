@@ -34,6 +34,7 @@ export class SearchResult extends Component {
     this.limitPageNumber = this.limitPageNumber.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.checkIfIsMarked = this.checkIfIsMarked.bind(this);
   }
 
   componentDidMount() {
@@ -130,6 +131,16 @@ export class SearchResult extends Component {
     }
   }
 
+  checkIfIsMarked(id) {
+    const { favorites } = this.state
+      for (let j=0; j < favorites.length; j++) {
+        if (id === favorites[j].newMovieId) {
+          return true
+        }
+      }
+    return false
+  }
+
   checkIfDataAvailable() {
     if (!this.state.isLoading) {
       return (
@@ -144,6 +155,7 @@ export class SearchResult extends Component {
                 rating={movie.vote_average}
                 addMovie={this.props.addMovie}
                 isLogged={this.props.isLogged}
+                isFavorite={this.checkIfIsMarked(movie.id)}
               />
             </Col>
           ))}
@@ -175,7 +187,7 @@ export class SearchResult extends Component {
                   rating={movie.vote_average}
                   addMovie={this.props.addMovie}
                   isLogged={this.props.isLogged}
-                  favorite={this.props.favorite}
+                  isFavorite={this.checkIfIsMarked(movie.id)}
                 />
               </Col>
             ))}
