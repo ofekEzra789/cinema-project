@@ -42,7 +42,7 @@ export class SearchResult extends Component {
 
     let urlWithParams = `${baseUrl}&page=${
       this.state.page
-    }&with_genres=${this.props.checkGenre()}`;
+      }&with_genres=${this.props.checkGenre()}`;
 
     axios
       .get(urlWithParams)
@@ -59,7 +59,7 @@ export class SearchResult extends Component {
     if (prevProps.genreId !== this.props.genreId) {
       let urlWithParams = `${baseUrl}&page=${
         this.state.page
-      }&with_genres=${this.props.checkGenre()}`;
+        }&with_genres=${this.props.checkGenre()}`;
       axios
         .get(urlWithParams)
         .then(response => {
@@ -75,7 +75,7 @@ export class SearchResult extends Component {
     } else if (prevState.page !== this.state.page) {
       let urlWithParams = `${baseUrl}&page=${
         this.state.page
-      }&with_genres=${this.props.checkGenre()}`;
+        }&with_genres=${this.props.checkGenre()}`;
       axios
         .get(urlWithParams)
         .then(response => {
@@ -156,6 +156,7 @@ export class SearchResult extends Component {
                 addMovie={this.props.addMovie}
                 isLogged={this.props.isLogged}
                 isFavorite={this.checkIfIsMarked(movie.id)}
+                favorites={this.state.favorites}
               />
             </Col>
           ))}

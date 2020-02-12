@@ -27,9 +27,8 @@ export class SearchItem extends Component {
         }
     }
 
+    
     render() {
-        console.log(this.props.isFavorite)
-        console.log(this.props.favorites)
         let iconHeart;
         if(this.state.onWishList) {
             iconHeart = <i className="fas fa-heart" style={{fontSize: "3rem" ,color: "crimson"}} ></i>
