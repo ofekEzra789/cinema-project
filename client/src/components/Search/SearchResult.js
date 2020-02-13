@@ -48,7 +48,9 @@ export class SearchResult extends Component {
       .get(urlWithParams)
       .then(response => {
         this.setState({ moviesArray: response.data.results, isLoading: false });
-        this.isOnWishList();
+        if (localStorage.getItem('user')) {
+          this.isOnWishList();
+        }
       })
       .catch(err => {
         console.log(err);
@@ -133,11 +135,11 @@ export class SearchResult extends Component {
 
   checkIfIsMarked(id) {
     const { favorites } = this.state
-      for (let j=0; j < favorites.length; j++) {
-        if (id === favorites[j].newMovieId) {
-          return true
-        }
+    for (let j = 0; j < favorites.length; j++) {
+      if (id === favorites[j].newMovieId) {
+        return true
       }
+    }
     return false
   }
 
@@ -223,7 +225,6 @@ export class SearchResult extends Component {
     axios
       .get(`http://localhost:5000/account/users/onWishList/${userId}`)
       .then(res => {
-        console.log(res.data);
         console.log(res.status);
         this.setState({ favorites: res.data });
       })

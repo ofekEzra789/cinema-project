@@ -15,15 +15,12 @@ export class WishListItem extends Component {
   }
 
   handleRemoveMovie() {
-    console.log(this.props.id);
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user._id);
     axios
       .delete(
         `http://localhost:5000/account/users/favoritesList/${user._id}/${this.props.id}`
       )
       .then(res => {
-        console.log(res.data);
         this.props.removeMovie(this.props.id);
       })
       .catch(err => {

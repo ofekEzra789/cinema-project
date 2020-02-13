@@ -21,7 +21,6 @@ export class WishList extends Component {
         userId: user._id
       })
       .then(res => {
-        console.log(res.data);
         this.setState({ favorites: res.data });
       })
       .catch(err => {
@@ -33,7 +32,6 @@ export class WishList extends Component {
     const itemToRemove = this.state.favorites.findIndex(fav => {
       return fav.newMovieId === itemId;
     });
-    console.log(itemToRemove);
 
     const tempArray = [...this.state.favorites];
     tempArray.splice(itemToRemove, 1);

@@ -30,6 +30,10 @@
     transition: all 0.3s;
 }
 
+.Navbar-nav #Navbar-Logo a::after {
+    border: none;
+}
+
 .Navbar-nav a:hover::after {
     transform: scaleX(1);
 }
@@ -41,7 +45,10 @@
     margin: 0 2rem;
 }
 
-.dropdown button, .dropdown button:focus, .dropdown button:hover, .dropdown button:active  {
+.dropdown button,
+.dropdown button:focus,
+.dropdown button:hover,
+.dropdown button:active {
     background-color: transparent !important;
     border: none !important;
     outline: none !important;
@@ -62,7 +69,7 @@
 
 .signUp {
     margin: 0 2rem;
-}   
+}
 
 .dropdown a {
     color: #698474;
@@ -85,10 +92,39 @@
 }
 
 .activeLink {
-    color: #db3056!important;
+    color: #db3056 !important;
     font-weight: 700 !important;
 }
 
+.navbar-inside {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
+.navbar-inside > *:not(:last-child) {
+    margin-right: 0.5rem !important;
+}
 
+.dropdown {
+}
 
+.dropdown button {
+    margin-right: 0.8rem;
+}
+
+/* Media Quries */
+
+@media screen and (max-width: 770px) {
+    .Navbar-nav {
+        flex-flow: column;
+    }
+
+    .home {
+        margin: 0;
+    }
+
+    .dropdown {
+        margin: 0;
+    }
+}

@@ -90,6 +90,10 @@
     justify-content: space-between;
 }
 
+.button-Movie-Page {
+    align-self: flex-start;
+}
+
 .moviePage-moreDescription > * {
     font-weight: bold;
 }
@@ -114,63 +118,33 @@
     }
 }
 
-.ticket-header {
-    padding: 3rem 0;
-}
+@media screen and (max-width: 553px) {
+    .MoviePage__description {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        align-items: center;
+    }
 
-.ticket-header::before {
-    content: "&";
-    color: transparent;
-    display: block;
-    width: 100%;
-    height: 15px;
-    background-color: #851d41;
-    border-radius: 5px;
-}
+    .MoviePage__description > * {
+        text-align: center !important;
+    }
 
-.ticket-header:after {
-    content: "&";
-    color: transparent;
-    display: block;
-    width: 100%;
-    height: 15px;
-    background-color: #851d41;
-    border-radius: 5px;
-}
+    .MoviePage-genres__container {
+        justify-content: center;
+    }
 
-.Seats-places {
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-around;
-    padding: 1.5rem 0;
-}
+    .moviePage-overview {
+        text-align: center;
+    }
 
-.Seats-places > * {
-    margin: 0.5rem;
-}
+    .moviePage-moreDescription {
+        text-align: center;
+    }
 
-.total-amount {
-    order: -3;
-}
-
-.Seats-container {
-    max-width: 600px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.Seats-screen {
-    width: 100%;
-    border-radius: 5px;
-    margin: 0.5rem 0;
-    flex: 0 0 100%;
-    background-color: lightcoral;
-}
-
-.button-Movie-Page {
-    align-self: flex-start;
-    margin: 0.8rem 0;
+    .button-Movie-Page {
+        align-self: stretch;
+    }
 }
 
 

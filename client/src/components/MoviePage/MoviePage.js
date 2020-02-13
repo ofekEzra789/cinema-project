@@ -100,7 +100,7 @@ export class MoviePage extends Component {
                   <p className="year">
                     Year: {movieInfo.release_date.slice(0, 4)}
                   </p>
-                  <p className="rating d-flex align-items-center">
+                  <p>
                     Rating: {`${movieInfo.vote_average} /10`}
                     <i
                       className="em em-star mx-2"
