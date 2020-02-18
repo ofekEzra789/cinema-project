@@ -37,6 +37,12 @@ app.get("/account/users/onWishList/:id", (req, res) => {
 app.delete("/account/users/favoritesList/:userId/:movieId", (req, res) => {
     handleDelete.handleDelete(req, res);
 });
+
+
+// Serve The react app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 // Port
 const port = 5000 || process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
