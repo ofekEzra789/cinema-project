@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));
-
+const path = require("path");
 // SignUp
 app.post("/account/users/signUp", (req, res) => {
   SignUp.signUp(req, res);
@@ -31,18 +31,19 @@ app.get("/account/users/favoritesList/:id", (req, res) => {
 });
 //Get onWishList
 app.get("/account/users/onWishList/:id", (req, res) => {
-    onWishList.onWishList(req, res);
+  onWishList.onWishList(req, res);
 });
 //handleDelete
 app.delete("/account/users/favoritesList/:userId/:movieId", (req, res) => {
-    handleDelete.handleDelete(req, res);
+  handleDelete.handleDelete(req, res);
 });
 
 
 // Serve The react app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
+
 // Port
 const port = 5000 || process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
