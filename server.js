@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
+const path = require("path");
 const login = require("./login");
 const SignUp = require("./signUp");
 const addFavorites = require("./wishList");
@@ -12,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));
-const path = require("path");
+
 // SignUp
 app.post("/account/users/signUp", (req, res) => {
   SignUp.signUp(req, res);
