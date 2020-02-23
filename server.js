@@ -45,6 +45,16 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
+// Serve Static Assets if in Production
+if (process.env.NODE_ENV === 'production') {
+  // set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 // Port
 const port = 5000 || process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
