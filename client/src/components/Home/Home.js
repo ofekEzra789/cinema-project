@@ -28,6 +28,7 @@ export class Home extends Component {
         const responseTopRated = axios.get(baseUrl + queryTopRated)
 
         axios.all([responsePopularMovies, responseTopRated]).then(axios.spread((...response) => {
+            console.log(response)
             this.setState({ popularMovies: response[0].data.results, topRatedMovies: response[1].data.results,
             isLoading: false})
         }))
