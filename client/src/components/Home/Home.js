@@ -20,18 +20,17 @@ export class Home extends Component {
         this.checkIfDataAvailable = this.checkIfDataAvailable.bind(this);
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         const queryPopularMovies = `/popular?api_key=${apiKey}&language=en-US&page=1&video=true`;
         const queryTopRated = `/top_rated/?api_key=${apiKey}&language=en-US&page=1&video=true`;
+        
+        const responsePopularMovies = axios.get(baseUrl + queryPopularMovies)
+        const responseTopRated = axios.get(baseUrl + queryTopRated)
 
-        const responsePopularMovies = await axios.get(baseUrl + queryPopularMovies)
-        const responseTopRated = await axios.get(baseUrl + queryTopRated)
-
-        this.setState({
-            topRatedMovies: responseTopRated.data.results,
-            popularMovies: responsePopularMovies.data.results,
-            isLoading: false
-        })
+        axios.all([responsePopularMovies, responseTopRated]).then(axios.spread((...response) => {
+            this.setState({ popularMovies: response[0].data.results, topRatedMovies: response[1].data.results,
+            isLoading: false})
+        }))
     }
 
     checkIfDataAvailable(moviesArray) {
