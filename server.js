@@ -14,6 +14,14 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+app.use(function (req, res, next){
+  if (req.headers['x-forwarded-proto'] === 'https') {
+    res.redirect('http://' + req.hostname + req.url);
+  } else {
+    next();
+  }
+});
+
 // SignUp
 app.post("/account/users/signUp", (req, res) => {
   SignUp.signUp(req, res);
