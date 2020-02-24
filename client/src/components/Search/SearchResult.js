@@ -223,7 +223,7 @@ export class SearchResult extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user._id;
     axios
-      .get(`http://localhost:5000/account/users/onWishList/${userId}`)
+      .get(`https://localhost:5000/account/users/onWishList/${userId}`)
       .then(res => {
         console.log(res.status);
         this.setState({ favorites: res.data });
