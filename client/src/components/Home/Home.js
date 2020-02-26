@@ -21,8 +21,8 @@ export class Home extends Component {
     }
 
     componentDidMount() {
-        const now_playing = `/now_playing?api_key=${apiKey}&language=en-US&page=1&video=true&page=1`;
-        const upcoming = `/upcoming/?api_key=${apiKey}&language=en-US&page=1&video=true&page=1`;
+        const now_playing = `/now_playing?api_key=${apiKey}&language=en-US&video=true&page=1`;
+        const upcoming = `/upcoming/?api_key=${apiKey}&language=en-US&video=true&page=1`;
 
         const responseupcoming = axios.get(baseUrl + now_playing)
         const responseTopRated = axios.get(baseUrl + upcoming)
