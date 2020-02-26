@@ -130,10 +130,6 @@
         text-align: center !important;
     }
 
-    .MoviePage-genres__container {
-        justify-content: center;
-    }
-
     .moviePage-overview {
         text-align: center;
     }
@@ -144,6 +140,39 @@
 
     .button-Movie-Page {
         align-self: stretch;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .MoviePage__description h2 {
+        font-size: 2rem;
+        margin: 0 auto;
+    }
+
+    .moviePage-overview {
+        max-width: 300px;
+        font-size: 1rem;
+        margin: 1rem auto;
+    }
+
+    .MoviePage-genres__container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+    }
+
+    .MoviePage-genres__container span {
+        align-self: stretch;
+    }
+
+    .moviePage-moreDescription {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    iframe {
+        max-width: 300px;
+        margin: 0 auto;
     }
 }
 
