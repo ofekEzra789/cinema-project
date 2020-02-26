@@ -6,8 +6,8 @@ import Movie from '../Movie/Movie';
 import Button from "@material-ui/core/Button";
 
 const apiKey = 'f35b8795c5a78c90b11cf249e92b1995';
-const baseUrl = 'http://api.themoviedb.org/3/movie';
-const baseImgUrl = 'http://image.tmdb.org/t/p/w500';
+const baseUrl = 'https://api.themoviedb.org/3/movie';
+const baseImgUrl = 'https://image.tmdb.org/t/p/w500';
 
 export class Home extends Component {
     constructor(props) {
