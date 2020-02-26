@@ -21,16 +21,18 @@ export class Home extends Component {
     }
 
     componentDidMount() {
-        const queryPopularMovies = `/popular?api_key=${apiKey}&language=en-US&page=1&video=true`;
-        const queryTopRated = `/top_rated/?api_key=${apiKey}&language=en-US&page=1&video=true`;
-        
+        const queryPopularMovies = `/popular?api_key=${apiKey}&language=en-US&page=1&video=true&page=2`;
+        const queryTopRated = `/top_rated/?api_key=${apiKey}&language=en-US&page=1&video=true&page=2`;
+
         const responsePopularMovies = axios.get(baseUrl + queryPopularMovies)
         const responseTopRated = axios.get(baseUrl + queryTopRated)
 
         axios.all([responsePopularMovies, responseTopRated]).then(axios.spread((...response) => {
             console.log(response)
-            this.setState({ popularMovies: response[0].data.results, topRatedMovies: response[1].data.results,
-            isLoading: false})
+            this.setState({
+                popularMovies: response[0].data.results, topRatedMovies: response[1].data.results,
+                isLoading: false
+            })
         }))
     }
 
@@ -66,7 +68,7 @@ export class Home extends Component {
                         <Container>
                             <h1 className="Home-headline__primary">Welcome To Ninja Movies Website</h1>
                             <p className="Home-headline__secondary">Ninja movies is a web application that allow memebers to search and find information about movies, and add to a favorite movies to a wishlist for registered members</p>
-                            <Button href="#mainSite" className="Home-headline-button" variant="contained" color="secondary" size="medium">To the site</Button>
+                            <Button href="#mainSite" className="Home-headline-button" variant="contained" color="secondary" size="medium">To the Movies</Button>
                         </Container>
                     </div>
                 </div>
