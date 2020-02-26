@@ -13,24 +13,24 @@ export class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topRatedMovies: null,
-            popularMovies: null,
+            now_playing: null,
+            upcoming: null,
             isLoading: true
         }
         this.checkIfDataAvailable = this.checkIfDataAvailable.bind(this);
     }
 
     componentDidMount() {
-        const queryPopularMovies = `/popular?api_key=${apiKey}&language=en-US&page=1&video=true&page=2`;
-        const queryTopRated = `/top_rated/?api_key=${apiKey}&language=en-US&page=1&video=true&page=2`;
+        const now_playing = `/now_playing?api_key=${apiKey}&language=en-US&page=1&video=true&page=1`;
+        const upcoming = `/upcoming/?api_key=${apiKey}&language=en-US&page=1&video=true&page=1`;
 
-        const responsePopularMovies = axios.get(baseUrl + queryPopularMovies)
-        const responseTopRated = axios.get(baseUrl + queryTopRated)
+        const responseupcoming = axios.get(baseUrl + now_playing)
+        const responseTopRated = axios.get(baseUrl + upcoming)
 
-        axios.all([responsePopularMovies, responseTopRated]).then(axios.spread((...response) => {
+        axios.all([responseupcoming, responseTopRated]).then(axios.spread((...response) => {
             console.log(response)
             this.setState({
-                popularMovies: response[0].data.results, topRatedMovies: response[1].data.results,
+                upcoming: response[0].data.results, now_playing: response[1].data.results,
                 isLoading: false
             })
         }))
@@ -75,13 +75,13 @@ export class Home extends Component {
 
                 <div className="Home-main">
                     <Container id="mainSite" className="p-3">
-                        <h2 className="Home-main-primary">Popular Movies</h2>
-                        {this.checkIfDataAvailable(this.state.popularMovies)}
+                        <h2 className="Home-main-primary">Upcoming Movies</h2>
+                        {this.checkIfDataAvailable(this.state.upcoming)}
                     </Container>
 
                     <Container className="p-3">
-                        <h2 className="Home-main-primary">Top Rated Movies</h2>
-                        {this.checkIfDataAvailable(this.state.topRatedMovies)}
+                        <h2 className="Home-main-primary">Now Playing Movies</h2>
+                        {this.checkIfDataAvailable(this.state.now_playing)}
                     </Container>
                 </div>
             </div>
