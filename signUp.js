@@ -1,5 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://localhost:27017/";
+const url = "mongodb+srv://ayenachew:AmY09865@cluster0-gwifx.mongodb.net/test?retryWrites=true&w=majority";
 const dbName = "cinema",
   collectionName = "users";
 const ObjectId = require("mongodb").ObjectId;
