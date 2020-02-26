@@ -21,22 +21,22 @@
     animation-delay: 0.5s;
 }
 
-.MoviePage-main > *:not(:last-child) {
+.MoviePage-main>*:not(:last-child) {
     margin-right: 1.5rem;
 }
 
 .MoviePage-img__container {
     flex: 0 0 30%;
-} 
+}
 
 .MoviePage-img__container img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    
+
 }
 
-.MoviePage__description > * {
+.MoviePage__description>* {
     margin-bottom: 1.5rem;
 }
 
@@ -57,7 +57,7 @@
     margin: 1rem 0;
 }
 
-.MoviePage-genres__container > * {
+.MoviePage-genres__container>* {
     margin: 0.6rem;
 }
 
@@ -94,7 +94,7 @@
     align-self: flex-start;
 }
 
-.moviePage-moreDescription > * {
+.moviePage-moreDescription>* {
     font-weight: bold;
 }
 
@@ -103,7 +103,7 @@
         flex-wrap: wrap;
     }
 
-    .MoviePage-img__container  {
+    .MoviePage-img__container {
         flex: 0 0 100%;
     }
 
@@ -113,7 +113,7 @@
 
     .MoviePage-img__container img {
         height: 20rem;
-        object-fit:  cover;
+        object-fit: cover;
         object-position: top;
     }
 }
@@ -126,7 +126,7 @@
         align-items: center;
     }
 
-    .MoviePage__description > * {
+    .MoviePage__description>* {
         text-align: center !important;
     }
 
@@ -143,7 +143,7 @@
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 500px) {
     .MoviePage__description h2 {
         font-size: 2rem;
         margin: 0 auto;
@@ -175,7 +175,3 @@
         margin: 0 auto;
     }
 }
-
-
-
-
