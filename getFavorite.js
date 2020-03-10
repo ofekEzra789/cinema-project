@@ -1,14 +1,13 @@
 const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb+srv://ayenachew:AmY09865@cluster0-n6h3u.mongodb.net/cinema?retryWrites=true&w=majority";
-const dbName = "cinema",
-  collectionName = "users";
+const dbName = "cinema", collectionName = "users";
 const ObjectId = require("mongodb").ObjectId;
 
 //GetFavorite
 function getFavorite(req, res) {
   console.log("/users/favoritesList is accessed");
 
-  MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
     if (err) {
       console.log(err);
       return res.sendStatus(500);
@@ -19,7 +18,7 @@ function getFavorite(req, res) {
 
     dbo
       .collection(collectionName)
-      .findOne({ _id: ObjectId(userId) }, function(err, user) {
+      .findOne({ _id: ObjectId(userId) }, function (err, user) {
         if (err) {
           console.log(err);
           return res.sendStatus(500);
