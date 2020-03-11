@@ -92,6 +92,7 @@ export class App extends Component {
 
   render() {
 
+    console.log(localStorage.getItem('user'))
     return (
       <div className="App">
 

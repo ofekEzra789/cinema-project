@@ -28,7 +28,6 @@ export class Home extends Component {
         const responseTopRated = axios.get(baseUrl + upcoming)
 
         axios.all([responseupcoming, responseTopRated]).then(axios.spread((...response) => {
-            console.log(response)
             this.setState({
                 upcoming: response[0].data.results, now_playing: response[1].data.results,
                 isLoading: false

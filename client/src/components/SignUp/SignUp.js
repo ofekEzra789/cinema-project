@@ -10,6 +10,7 @@ export class SignUp extends Component {
             username: "",
             email: "",
             password: "",
+            favorites: [],
             confirmPassword: ""
         }
         this.handleChange = this.handleChange.bind(this);
@@ -23,13 +24,16 @@ export class SignUp extends Component {
     }
 
     handleSubmit(e) {
+
         e.preventDefault();
         if (this.state.password === this.state.confirmPassword) {
             axios.post('/account/users/signUp', {
                 username: this.state.username,
                 email: this.state.email,
                 password: this.state.password,
+                favorites: this.state.favorites
             }).then((response) => {
+
                 alert('Success');
                 this.props.history.push('/account/login')
             }).catch((err) => {
@@ -42,6 +46,7 @@ export class SignUp extends Component {
 
 
     render() {
+
         return (
             <div className="SignUp">
                 <form className="SignUp-form" onSubmit={this.handleSubmit}>

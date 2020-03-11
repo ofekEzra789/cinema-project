@@ -29,6 +29,7 @@ function addFavorites(req, res) {
         if (user) {
           if (user.favorites) {
             const favArray = user.favorites;
+            
             favArray.push(favorite);
             console.log("faveArray", favArray);
             dbo

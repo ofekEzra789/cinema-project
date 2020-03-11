@@ -17,13 +17,13 @@ function signUp(req, res) {
     const dbo = db.db(dbName);
     // --- expecting email , password...
     const queryUser = req.body;
-
+    
     dbo.collection(collectionName).findOne(
       {
         userName: queryUser.userName,
         email: queryUser.email,
-        password: queryUser.password,
-        confirmPassword: queryUser.confirmPassword
+        favorites: queryUser.favorites,
+        password: queryUser.password
       },
       function(err, user) {
         if (err) {
