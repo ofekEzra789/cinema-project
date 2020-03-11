@@ -61,7 +61,6 @@ export class App extends Component {
         }
       ]
     });
-    console.log(this.state.favorite)
     // this.sendFavorite()
   }
 
@@ -83,8 +82,7 @@ export class App extends Component {
       userId: user._id,
       favorites: favorite
     }).then((res) => {
-      console.log(res.data)
-      console.log(res.status)
+    
     }).catch((err) => {
       console.log(err)
     })
@@ -92,7 +90,6 @@ export class App extends Component {
 
   render() {
 
-    console.log(localStorage.getItem('user'))
     return (
       <div className="App">
 

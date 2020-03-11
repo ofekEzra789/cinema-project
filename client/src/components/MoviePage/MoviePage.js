@@ -47,7 +47,6 @@ export class MoviePage extends Component {
       .then(res => {
         const videoKey = res.data.results[0].key;
         this.setState({ trailer: `${videoUrl}${videoKey}` });
-        console.log(this.state.trailer);
       })
       .catch(err => {
         console.log(err);
@@ -64,7 +63,6 @@ export class MoviePage extends Component {
 
   render() {
     const { movieInfo } = this.state;
-    console.log(movieInfo)
     if (movieInfo) {
       return (
         <div className="MoviePage animated fadeInDown">
