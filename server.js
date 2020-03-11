@@ -55,5 +55,5 @@ if (process.env.NODE_ENV == "production" || true) {
 
 }
 // Port
-const port = process.env.MONGOLAB_URI|| 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
