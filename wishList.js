@@ -34,7 +34,7 @@ function addFavorites(req, res) {
             console.log("faveArray", favArray);
             dbo
               .collection(collectionName)
-              .update(
+              .updateOne(
                 { _id: ObjectId(userId) },
                 { $set: { favorites: favArray } }
               );
