@@ -7,7 +7,7 @@ const ObjectId = require("mongodb").ObjectId;
 function getFavorite(req, res) {
   console.log("/users/favoritesList is accessed");
 
-  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+  MongoClient.connect(url, { useNewUrlParser: true } ,{ useUnifiedTopology: true }, function (err, db) {
     if (err) {
       console.log(err);
       return res.sendStatus(500);

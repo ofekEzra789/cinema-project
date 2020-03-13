@@ -6,7 +6,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 //Delete
 function handleDelete(req, res) {
-  MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
+  MongoClient.connect(url, { useNewUrlParser: true } ,{ useUnifiedTopology: true }, function(err, db) {
     if (err) {
       console.log(err);
       return res.sendStatus(500);
