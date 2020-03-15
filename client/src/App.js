@@ -66,6 +66,7 @@ export class App extends Component {
 
  
   checkIfLogged() {
+    
     const isLogged = !this.state.isLogged
     this.setState({ isLogged: isLogged });
   }
