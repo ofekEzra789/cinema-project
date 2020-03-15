@@ -78,7 +78,7 @@ export class App extends Component {
 
   sendFavorite(favorite) {
     const user = JSON.parse(localStorage.getItem('user'));
-    axios.post("http://localhost:5000/account/users/favorites", {
+    axios.post("/account/users/favorites", {
       userId: user._id,
       favorites: favorite
     }).then((res) => {

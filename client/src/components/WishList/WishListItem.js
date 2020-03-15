@@ -18,7 +18,7 @@ export class WishListItem extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     axios
       .delete(
-        `http://localhost:5000/account/users/favoritesList/${user._id}/${this.props.id}`
+        `/account/users/favoritesList/${user._id}/${this.props.id}`
       )
       .then(res => {
         this.props.removeMovie(this.props.id);
