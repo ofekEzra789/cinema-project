@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt");
 const cors = require("cors");
 const path = require("path");
 const login = require("./login");
